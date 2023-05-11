@@ -31,6 +31,7 @@ export abstract class Server {
         this.app.set("views", path.join(__dirname, "..", "views"));
         this.viewEngine = viewEngine;
         this.app.set("view engine", viewEngine);
+        this.app.set("view options", {filename: true});
         this.app.use(express.static(path.join(__dirname, "..", "public")));
         this.initRouters();
         this.app.use(defaultErrorHandler);
