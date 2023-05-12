@@ -1,5 +1,4 @@
 {
-  "verbose": true,
   "ignore": [
     "public/styles/style.css"
   ],

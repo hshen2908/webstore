@@ -8,7 +8,7 @@ const express = require("express");
 const httpLogger: HttpLogger = require("pino-http")();
 const path = require("path");
 const defaultErrorHandler: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
-    res.status(404).render("./pageNotFound");
+    res.status(404).render("./pageNotFound", {title: "404 Not Found"});
 }
 
 export abstract class Server {

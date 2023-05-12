@@ -6,10 +6,9 @@ interface IProduct {
     productName: string,
     price: number,
     quantity: number,
-    tags: string,
+    tags: [string],
     hidden: boolean,
     onSale: boolean,
-    imageURL: string,
 }
 
 const schemaProperties = {
@@ -17,10 +16,10 @@ const schemaProperties = {
     productName: {type: String, required: true},
     price: {type: Number, min: 0, required: true},
     quantity: {type: Number, min: 0, required: true},
-    tags: [{type: String, required: true}],
+    tags: [{type: String}],
     hidden: {type: Boolean, required: true},
     onSale: {type: Boolean, required: true},
-    imageURL: {type: String, required: true},
+    newArrival: {type: Boolean, required: true},
 };
 
 const schemaOptions = {
