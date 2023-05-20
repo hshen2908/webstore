@@ -2,8 +2,8 @@ import {Schema} from "mongoose";
 import * as mongoose from "mongoose";
 
 interface IProduct {
-    productCode: number,
-    productName: string,
+    code: number,
+    name: string,
     price: number,
     quantity: number,
     tags: [string],
@@ -12,8 +12,8 @@ interface IProduct {
 }
 
 const schemaProperties = {
-    productCode: {type: Number, min: 0, required: true},
-    productName: {type: String, required: true},
+    code: {type: Number, min: 0, required: true},
+    name: {type: String, required: true},
     price: {type: Number, min: 0, required: true},
     quantity: {type: Number, min: 0, required: true},
     tags: [{type: String}],
