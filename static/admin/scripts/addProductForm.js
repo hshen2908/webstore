@@ -39,7 +39,7 @@ addProductForm.addEventListener("submit", async (e) => {
         const variants = [];
         for (let i = 0; i < numberOfVariants; i++) {
             variants.push({
-                color: productVariant.color[i].values,
+                color: Number.parseInt(productVariant.color[i].value.substr(1), 16),
                 images: productVariant.imagesData[i]
             });
         }
