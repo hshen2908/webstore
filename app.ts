@@ -21,12 +21,12 @@ export class App {
 
     async start(): Promise<void> {
         this.server.start();
-        await this.database.connect(() => console.info("Connected to Database"), () => console.info("Error when connecting to Database"));
+        await this.database.connect();
     }
 
     async stop(): Promise<void> {
-        await this.server.stop((err) => console.info(`Server Closed`));
-        await this.database.disconnect(() => console.info("Disconnected from Database"), () => console.info("Error when connecting to Database"));
+        await this.server.stop();
+        await this.database.disconnect();
     }
 }
 

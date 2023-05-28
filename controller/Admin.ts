@@ -23,7 +23,7 @@ adminRouter.post("/products", async (req: Request, res: Response) => {
     res.status(200).send("{}");
 });
 
-adminRouter.post("/api/upload-signature", async (req: Request, res: Response) => {
+async function getImageUploadSignature() {
     const timestamp: number = new Date().getTime();
     const apiKey: string = process.env.CLOUDINARY_API_KEY;
     const uploadUrl: string = process.env.CLOUDINARY_UPLOAD_URL;
@@ -34,8 +34,13 @@ adminRouter.post("/api/upload-signature", async (req: Request, res: Response) =>
         folder: uploadFolder,
         upload_preset: uploadPreset,
     }, process.env.CLOUDINARY_SECRET);
+    return {timestamp, apiKey, uploadUrl, uploadPreset, uploadFolder, signature};
+}
 
-    res.status(200).send({timestamp, signature, apiKey, uploadUrl, uploadPreset, uploadFolder});
+adminRouter.post("/api/upload-signature", async (req: Request, res: Response) => {
+    const uploadSignatureResponse = await getImageUploadSignature();
+
+    res.status(200).send(uploadSignatureResponse);
     res.end();
 });
 

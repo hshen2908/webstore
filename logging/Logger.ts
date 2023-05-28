@@ -22,6 +22,7 @@ export class Logger {
                 },
             ],
         })
+        this.logPath = logPath;
         this.pinoLogger = pino(transport);
     }
 

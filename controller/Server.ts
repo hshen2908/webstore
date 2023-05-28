@@ -25,9 +25,9 @@ export abstract class Server {
                 enableLogging: boolean = true, logPath: string = "./logs") {
         this.app = express();
         this.port = port;
-        enableLogging && (this.logger = new ServerLogger())
-        && this.app.use(async (req, res, next) => await this.logger.logRequest(req, res, next))
-        && this.app.use(async (err, req, res, next) => await this.logger.logRequestError(err, req, res, next))
+        enableLogging && (this.logger = new ServerLogger(this))
+        && this.app.use((req, res, next) => this.logger.logRequest(req, res, next))
+        && this.app.use((err, req, res, next) => this.logger.logRequestError(err, req, res, next))
         // && this.app.use(httpLogger);
         this.app.set("views", path.join(__dirname, "..", "views"));
         this.viewEngine = viewEngine;
@@ -40,7 +40,7 @@ export abstract class Server {
 
     start(onListen?: () => void, onError?: (err: Error) => void): void {
         this.httpServer = this.app.listen(this.port, () => {
-            this.logger.info(`Server Started on port ${this.port}`);
+            this.logger.logServerStart();
             onListen && onListen();
         }).on("error", (err: Error) => {
             this.logger.error("Error Starting Server");
@@ -56,7 +56,7 @@ export abstract class Server {
             if (code === "SERVER_ERROR") this.logger.error(`Error Closing Server - ${message}; ${err}`);
             if (code === "INTERNAL_ERROR") this.logger.error(`Error Closing Server - ${message}; ${err}`);
         } else {
-            this.logger.info("Server Closed Successfully");
+            this.logger.logServerStop();
         }
         onClose && onClose(err);
     }
