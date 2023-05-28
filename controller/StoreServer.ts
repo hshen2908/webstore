@@ -2,6 +2,7 @@ import {Server} from "./Server";
 import {rootRouter} from "./Root";
 import {adminRouter} from "./Admin";
 import {auth, requiresAuth} from "express-openid-connect";
+import {NextFunction, Request, Response} from "express";
 
 require("dotenv").config();
 
@@ -19,9 +20,10 @@ export class StoreServer extends Server {
         // auth router attaches /login, /logout, and /callback routes to the baseURL
         this.app.use(auth(config));
         // req.isAuthenticated is provided from the auth router
-        // this.app.get('/', (req, res) => {
-        //     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-        // });
+        this.app.use((req: Request, res: Response, next: NextFunction) => {
+            res.locals.isAuthenticated = req.oidc.isAuthenticated();
+            next();
+        });
         this.app.get('/profile', requiresAuth(), (req, res) => {
             res.send(JSON.stringify(req.oidc.user));
         });
