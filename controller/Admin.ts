@@ -2,11 +2,15 @@ import express, {Request, Response, Router} from "express";
 import path from "path";
 import cloudinary from "cloudinary";
 import {GlassesModel} from "../model/Glasses";
+import {requiresAuth} from "express-openid-connect";
 
 const adminRouter: Router = Router();
 
+
 adminRouter.use(express.static(path.join(__dirname, "..", "static", "admin")));
 adminRouter.use(express.json());
+
+adminRouter.use(requiresAuth());
 
 adminRouter.get("/products", async (req: Request, res: Response) => {
     res.render("./admin/products", {title: "Admin Products"});
