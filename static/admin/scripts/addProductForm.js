@@ -64,8 +64,6 @@ addProductForm.addEventListener("submit", async (e) => {
     } else {
         console.log("FORM SUBMISSION INVALID ERROR")
     }
-    
-
 });
 
 function isValidForm(formElement) {
