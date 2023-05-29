@@ -9,4 +9,8 @@ rootRouter.get("/", async (req: Request, res: Response) => {
     res.render("./root", {title: "Home", glasses});
 });
 
+rootRouter.get("/contact", (req: Request, res: Response) => {
+    res.render("./contact", {title: "Contact"});
+});
+
 export {rootRouter};

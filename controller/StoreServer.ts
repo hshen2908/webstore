@@ -22,6 +22,7 @@ export class StoreServer extends Server {
         // req.isAuthenticated is provided from the auth router
         this.app.use((req: Request, res: Response, next: NextFunction) => {
             res.locals.isAuthenticated = req.oidc.isAuthenticated();
+            res.locals.user = req.oidc.user;
             next();
         });
         this.app.get('/profile', requiresAuth(), (req, res) => {
