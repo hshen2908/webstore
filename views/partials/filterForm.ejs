@@ -1,0 +1,241 @@
+<div class="py-2 border-b-[1px] border-solid dark:border-gray-600 border-gray-400 flex">
+    <form action="/products" method="post" class="flex flex-1" id="applyFiltersForm">
+        <ul class="flex flex-wrap justify-between flex-grow px-4">
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="colorsButton" class="text-xl font-normal hover:text-rose-600">COLORS <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div id="colorsSelect" class="flex flex-wrap gap-1 my-2 hidden">
+                    <div class="flex flex-col gap-1">
+                        <div class="flex" id="">
+                            <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorBright0Checkbox" value="true">
+                            <label style="background-color: hsla(0deg 0% 100%);" id="" for="productColorBright0Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+                        <div class="flex" id="">
+                            <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorDark1Checkbox" value="true">
+                            <label style="background-color: hsla(0deg, 0%, 0%)" id="" for="productColorDark1Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex" id="">
+                            <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorBright2Checkbox" value="true">
+                            <label style="background-color: hsla(0deg 0% 33%);" id="" for="productColorBright2Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+                        <div class="flex" id="">
+                            <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorDark3Checkbox" value="true">
+                            <label style="background-color: hsla(0deg 0% 16%);" id="" for="productColorDark3Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+                    </div>  
+                    <% for( let i = 0; i*30 <= 330; i++) { %>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex" id="">
+                                <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorBright<%-i+4%>Checkbox" value="true">
+                                <label style="background-color: hsla(<%-i*30%>deg 100% 33%);" id="" for="productColorBright<%-i+4%>Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                            </div>
+                            <div class="flex" id="">
+                                <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorDark<%-i+4%>Checkbox" value="true">
+                                <label style="background-color: hsla(<%-i*30%>deg 100% 16%);" id="" for="productColorDark<%-i+4%>Checkbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                            </div>
+                        </div>  
+                    <% } %>       
+                    <div class="flex flex-col gap-1">
+                        <div class="flex" id="">
+                            <input class="productColorsCheckbox peer form-checkbox rounded-md absolute hidden" type="checkbox" name=""  id="productColorBrightTransparentCheckbox" value="true">
+                            <label style="background-image: 
+                            linear-gradient(90deg, #999 4px, white 4px),
+                            linear-gradient(90deg, white 4px, #999 4px),
+                            linear-gradient(90deg, #999 4px, white 4px),
+                        linear-gradient(90deg, white 4px, #999 4px);
+                        background-position: 0 0, 0 4px, 0 8px, 0 12px;
+                        background-repeat: repeat-x;
+                        background-size: 8px 4px;" id="" for="productColorBrightTransparentCheckbox" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+                    </div>             
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="categoryButton" class="text-xl font-normal hover:text-rose-600">CATEGORIES <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div class="flex flex-wrap gap-2 my-2 hidden" id="categorySelect">
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="unissex" name="productUnissex" id="productUnissex" class="productCategoriesCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productUnissex" class="px-4 py-2 border-2 border-teal-400 text-teal-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">UNISSEX</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="men" name="productMen" id="productMen" class="productCategoriesCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productMen" class="px-4 py-2 border-2 border-cyan-400 text-cyan-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">MEN</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="women" name="productWomen" id="productWomen" class="productCategoriesCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productWomen" class="px-4 py-2 border-2 border-purple-400 text-purple-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WOMEN</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="kids" name="productKids" id="productKids" class="productCategoriesCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productKids" class="px-4 py-2 border-2 border-orange-400 text-orange-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">KIDS</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="materialButton" class="text-xl font-normal hover:text-rose-600">MATERIALS <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div class="flex flex-wrap gap-2 my-2 hidden" id="materialSelect">
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="acetate" name="productAcetate" id="productAcetate" class="productMaterialsCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productAcetate" class="px-4 py-2 border-2 border-red-400 text-red-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Acetate</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="stainless steel" name="productStainlessSteel" id="productStainlessSteel" class="productMaterialsCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productStainlessSteel" class="px-4 py-2 border-2 border-green-400 text-green-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Stainless Steel</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="titanium" name="productTitanium" id="productTitanium" class="productMaterialsCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productTitanium" class="px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Titanium</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex">
+                            <input type="checkbox" value="tr90" name="productTr90" id="productTr90" class="productMaterialsCheckbox peer form-checkbox rounded-md hidden">
+                            <label for="productTr90" class="px-4 py-2 border-2 border-pink-400 text-pink-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Tr90</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="modifiersButton" class="text-xl font-normal hover:text-rose-600">MODIFIERS <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div class="flex flex-wrap gap-2 hidden my-2" id="modifiersSelect">
+                    <div class="flex">
+                        <input type="checkbox" name="productNewArrival" id="productNewArrival" class="productModifiersCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productNewArrival" class="px-4 py-2 border-2 border-rose-400 text-rose-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">NEW ARRIVAL</label>
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productOnSale" id="productOnSale" class="productModifiersCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productOnSale" class="px-4 py-2 border-2 border-yellow-400 text-yellow-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ON SALE</label>
+                    </div>
+
+                    <div class="flex">
+                        <input type="checkbox" name="productHidden" id="productHidden" class="productModifiersCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productHidden" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">HIDDEN</label>
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="typeButton" class="text-xl font-normal hover:text-rose-600">TYPES <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div class="flex flex-wrap gap-2 hidden my-2" id="typeSelect">
+                    <div class="flex">
+                        <input type="checkbox" name="productEyeglasses" id="productEyeglasses" value="eyeglasses" class="productTypesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productEyeglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">EYEGLASSES</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productSunglasses" id="productSunglasses" value="sunglasses" class="productTypesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productSunglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SUNGLASSES</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productClipOn" id="productClipOn" value="clip on" class="productTypesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productClipOn" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLIP ON</label>    
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="shapesButton" class="text-xl font-normal hover:text-rose-600">SHAPES <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div class="flex flex-wrap gap-2 hidden my-2" id="shapesSelect">
+                    <div class="flex">
+                        <input type="checkbox" name="productRound" id="productRound" value="round" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productRound" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ROUND</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productCatEye" id="productCatEye" value="cat eye" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productCatEye" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CAT EYE</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productRectangle" id="productRectangle" value="rectangle" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productRectangle" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">RECTANGLE</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productWayfare" id="productWayfare" value="wayfare" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productWayfare" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WAYFARE</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productSquare" id="productSquare" value="square" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productSquare" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SQUARE</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productOval" id="productOval" value="oval" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productOval" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">OVAL</label>    
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productGeometric" id="productGeometric" value="geometric" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productGeometric" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">GEOMETRIC</label>   
+                    </div>
+                    
+                    <div class="flex">
+                        <input type="checkbox" name="productAviator" id="productAviator" value="aviator" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productAviator" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">AVIATOR</label>    
+                    </div>
+                        
+                    <div class="flex">
+                        <input type="checkbox" name="productClubmaster" id="productClubmaster" value="clubmaster" class="productShapesCheckbox peer form-checkbox rounded-md hidden">
+                        <label for="productClubmaster" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLUBMASTER</label>
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 relative basis-4/12 xl:basis-3/12">
+                <button type="button" id="dimensionsButton" class="text-xl font-normal hover:text-rose-600">DIMENSIONS <span class="rotate-[90deg] inline-block ">&#8227;</span></button>
+                <div id="dimensionsSelect" class="flex flex-wrap gap-2 my-2 hidden">
+                    <div class="flex flex-wrap flex-row gap-1">
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productEyeMin" class="">eye min: </label>
+                            <input type="number" name="productEyeMin" id="productEyeMin" class="form-input rounded-md text-black" min="0">
+                        </div>
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productEyeMax" class="">eye max: </label>
+                            <input type="number" name="productEyeMax" id="productEyeMax" class="form-input rounded-md text-black" min="0">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap flex-row gap-1">
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productBridgeMin" class="">bridge min: </label>
+                            <input type="number" name="productBridgeMin" id="productBridgeMin" class="form-input rounded-md text-black" min="0">
+                        </div>
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productBridgeMax" class="">bridge max: </label>
+                            <input type="number" name="productBridgeMax" id="productBridgeMax" class="form-input rounded-md text-black" min="0">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap flex-row gap-1">
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productTempleMin" class="">temple min: </label>
+                            <input type="number" name="productTempleMin" id="productTempleMin" class="form-input rounded-md text-black" min="0">
+                        </div>
+                        <div class="flex max-w-[48%] flex-col justify-center">
+                            <label for="productTempleMax" class="">temple max: </label>
+                            <input type="number" name="productTempleMax" id="productTempleMax" class="form-input rounded-md text-black" min="0">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="p-2 px-4 text-xl font-normal hover:text-rose-600 basis-4/12 xl:basis-3/12">
+                <button type="submit" class="" id="applyFiltersButton">
+                    APPLY FILTERS
+                </button>
+            </li>
+        </ul>
+    </form>
+</div>

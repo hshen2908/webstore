@@ -8,8 +8,8 @@ addProductForm.addEventListener("submit", async (e) => {
         data["name"] = addProductForm.productName.value;
         data["price"] = addProductForm.productPrice.value;
         data["quantity"] = addProductForm.productQuanfity.value;
-        data["hidden"] = addProductForm.productHidden.checked
-        data["onSale"] = addProductForm.productOnSale.checked
+        data["hidden"] = addProductForm.productHidden.checked;
+        data["onSale"] = addProductForm.productOnSale.checked;
         data["newArrival"] = addProductForm.productNewArrival.checked
         data["dimensions"] = {
             bridge: addProductForm.productBridge.value,

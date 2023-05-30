@@ -9,6 +9,7 @@ interface IProduct {
     tags: [string],
     hidden: boolean,
     onSale: boolean,
+    newArrival: boolean,
 }
 
 const schemaProperties = {

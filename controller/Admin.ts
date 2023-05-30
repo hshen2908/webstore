@@ -17,7 +17,6 @@ adminRouter.get("/products", async (req: Request, res: Response) => {
 });
 
 adminRouter.post("/products", async (req: Request, res: Response) => {
-    console.log(req.body);
     const newGlasses = await GlassesModel.create(req.body);
     await newGlasses.save();
     res.status(200).send("{}");

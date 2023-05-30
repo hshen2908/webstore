@@ -6,6 +6,9 @@ module.exports = {
   safelist: [
     'animate-dropdownOpen',
     'animate-dropdownClose',
+    {
+      pattern: /bg-+/,
+    }
   ],
   theme: {
     extend: {
@@ -16,24 +19,22 @@ module.exports = {
         keyframes: {
           dropdownOpen: {
             '0%': {
-              transform: 'scaleY(0)'
-            },
-            '80%': {
-                transform: 'scaleY(1.1)'
+              opacity: '0',
+              transform: 'translate(0px, -16px)'
             },
             '100%': {
-                transform: 'scaleY(1)'
+                opacity: '1.0',
+                transform: 'translate(0)'
             },
           },
           dropdownClose: {
             '0%': {
-              transform: 'scaleY(1)'
-            },
-            '80%': {
-                transform: 'scaleY(1.1)'
+                opacity: '1.0',
+                transform: 'translate(0)'
             },
             '100%': {
-                transform: 'scaleY(0)'
+                opacity: '0',
+                transform: 'translate(0px, -16px)'
             },
           },
         },

@@ -1,8 +1,8 @@
-function initChooseVariant() {
+function initChooseVariant(startIndex) {
     const productsContainer = document.getElementById("productsContainer");
     const productCount = Number.parseInt(productsContainer.attributes["data-product-count"].value);
 
-    for (let i = 0; i < productCount; i++) {
+    for (let i = startIndex; i < productCount; i++) {
         const variantsInfoContainerImages = document.getElementById(`[${i}]variantsInfoContainer[images]`);
         const variantsInfoContainerSelectorImages = document.getElementById(`[${i}]variantsInfoContainerSelector[images]`);
         document.querySelectorAll(`[id^="[${i}]productVariantInfoInput[color]"]`).forEach((variantInput) => {
@@ -10,7 +10,6 @@ function initChooseVariant() {
                 variantsInfoContainerImages.innerHTML = "";
                 variantsInfoContainerSelectorImages.innerHTML = "";
                 const images = JSON.parse(variantInput.attributes["data-images"].value);
-                console.dir(images)
                 if (images.length) {
                 images.forEach((image, index) => {
                         const newImageElement = document.createElement("img");
@@ -37,4 +36,4 @@ function initChooseVariant() {
         });
     }
 }
-initChooseVariant();
+initChooseVariant(0);
