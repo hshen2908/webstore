@@ -14,7 +14,7 @@ async function getProducts(startIndex) {
 
     const colorsCheckboxes = document.querySelectorAll(".productColorsCheckbox:checked");
     const colors = [];
-    colorsCheckboxes.forEach((shapesCheckbox) => colors.push(window.getComputedStyle(shapesCheckbox).backgroundColor));
+    colorsCheckboxes.forEach((colorsCheckbox) => colors.push(colorsCheckbox.value));
 
     const onSale = document.getElementById("productOnSale").checked;
     const newArrival = document.getElementById("productNewArrival").checked;
@@ -36,7 +36,6 @@ async function getProducts(startIndex) {
 
     const productsRequest = {categories, materials, types, shapes, colors, onSale, newArrival, dimensions, startIndex};
 
-    console.log(productsRequest);
     try {
         const response = await fetch("/products", {
             method: "POST",

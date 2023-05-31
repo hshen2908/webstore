@@ -3,7 +3,7 @@ import {GlassesModel} from "../model/Glasses";
 
 function getProducts(filter, includeHidden: boolean): Promise<any> {
     const modelFilter = {};
-    const $and = [{}, {}, {}, {}];
+    const $and = [{}, {}, {}, {}, {}];
     (filter?.categories?.length) && (filter.categories.length !== 0) && ($and[0]["$or"] = filter.categories.map((category) => {
         return {categories: category};
     }));
@@ -15,6 +15,9 @@ function getProducts(filter, includeHidden: boolean): Promise<any> {
     }));
     (filter?.shapes?.length) && (filter.shapes.length !== 0) && ($and[3]["$or"] = filter.shapes.map((shape) => {
         return {shape: shape};
+    }));
+    (filter?.colors?.length) && (filter.colors.length !== 0) && ($and[4]["$or"] = filter.colors.map((color) => {
+        return {"variants.color": color};
     }));
     modelFilter["$and"] = $and;
 
