@@ -1,22 +1,15 @@
-<% glasses.forEach((g, gIndex) => { %>
-    <!-- <div class="border-none rounded-lg flex">
-        <img src="<%- g.variants[0].images[0].url %>" alt="" class="rounded-lg w-2/3 shadow-sm aspect-square object-cover" loading="lazy">
-        <div class="w-1/3 p-4 flex flex-col justify-between bg-gray-100 dark:bg-gray-700 my-1 shadow-sm">
-                <h2 class="text-lg font-medium"><%- `${g.productName} ${g.productCode}` %></h2>
-                
-                <p class="text-sm font-normal">Description Lorem, ipsror eos natus accusamus eius explicabo voluptas, temporibus dolores mollitia harum.</p>
-        </div>
-    </div> -->
+<% for(let glassesIndex = startIndex; glassesIndex < glasses.length && glassesIndex < initialMaxProductCount; glassesIndex++) { %>
+    <% let g = glasses[glassesIndex]; %>
     <% if (!g.hidden) { %>
         <div class="border-none rounded-lg flex min-w-full lg:min-w-0 relative group hover:scale-[1.02] ease-in duration-75">
             <!-- <img src="" alt="" class="rounded-lg w-2/3 shadow-sm aspect-square object-cover" loading="lazy"> -->
             <div class="dark:bg-zinc-900 relative rounded-lg w-2/3 shadow-lg flex justify-center">
-                <div id="[<%- gIndex + startIndex %>]variantsInfoContainerSelector[images]" class="absolute flex justify-between gap-1 bottom-4">
+                <div id="[<%- glassesIndex %>]variantsInfoContainerSelector[images]" class="absolute flex justify-between gap-1 bottom-4">
                     <% g.variants[0].images.forEach(image => { %>
                         <a href="#<%- image.fileName.split("/")[1] %>" class="text-gray-700 opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>                             
                     <% }) %>
                 </div>
-                <div id="[<%- gIndex + startIndex %>]variantsInfoContainer[images]" class="rounded-lg min-w-full shadow-sm aspect-square object-cover overflow-hidden overflow-x-hidden snap-x snap-mandatory scroll-smooth flex gap-x-4">
+                <div id="[<%- glassesIndex %>]variantsInfoContainer[images]" class="rounded-lg min-w-full shadow-sm aspect-square object-cover overflow-hidden overflow-x-hidden snap-x snap-mandatory scroll-smooth flex gap-x-4">
                     <% g.variants[0].images.forEach(image => { %>
                         <img src="<%- image.url %>" class="rounded-lg min-w-full shadow-sm aspect-square object-cover snap-center" id="<%- image.fileName.split("/")[1] %>"></img>
                     <% }) %>
@@ -24,28 +17,28 @@
             </div>
             
             <div class="absolute -left-1 -top-1 flex flex-col">
-                <h2 id="[<%- gIndex + startIndex %>]productNewArrivalInfo" class="font-medium py-1 bg-rose-500 inline-block px-8 <%- g.newArrival ? "" : "hidden" %>">NEW ARRIVAL</h2>
-                <h2 id="[<%- gIndex + startIndex %>]productOnSaleInfo" class="font-medium py-1 bg-yellow-500 inline-block px-8 self-start <%- g.onSale ? "" : "hidden" %>">ON SALE</h2>                    
-                <h2 id="[<%- gIndex + startIndex %>]productHiddenInfo" class="font-medium py-1 bg-slate-500 inline-block px-8 self-start <%- g.hidden ? "" : "hidden" %>">HIDDEN</h2>
+                <h2 id="[<%- glassesIndex %>]productNewArrivalInfo" class="font-medium py-1 bg-rose-500 inline-block px-8 <%- g.newArrival ? "" : "hidden" %>">NEW ARRIVAL</h2>
+                <h2 id="[<%- glassesIndex %>]productOnSaleInfo" class="font-medium py-1 bg-yellow-500 inline-block px-8 self-start <%- g.onSale ? "" : "hidden" %>">ON SALE</h2>                    
+                <h2 id="[<%- glassesIndex %>]productHiddenInfo" class="font-medium py-1 bg-slate-500 inline-block px-8 self-start <%- g.hidden ? "" : "hidden" %>">HIDDEN</h2>
             </div>
             
             <div class="dark:bg-zinc-900 w-1/3 p-4 flex flex-col justify-between my-1 shadow-lg rounded-r-lg">
                 <div class="flex justify-between" style="container-type: inline-size;">
-                    <h2 id="[<%- gIndex + startIndex %>]productNameInfo" class="overflow-ellipsis overflow-hidden text-[16cqw] font-medium block group-hover:text-rose-600"><%- g.name %></h2>
+                    <h2 id="[<%- glassesIndex %>]productNameInfo" class="overflow-ellipsis overflow-hidden text-[16cqw] font-medium block group-hover:text-rose-600"><%- g.name %></h2>
                     <div class="w-[40cqw]">
-                        <h2 id="[<%- gIndex + startIndex %>]productPriceInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block before:content-['R$\00a0']"><%- g.price %></h2>
-                        <h2 id="[<%- gIndex + startIndex %>]productTypeInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block capitalize"><%- g.type %></h2>
+                        <h2 id="[<%- glassesIndex %>]productPriceInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block before:content-['R$\00a0']"><%- g.price %></h2>
+                        <h2 id="[<%- glassesIndex %>]productTypeInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block capitalize"><%- g.type %></h2>
                     </div>
                     
                 </div>
 
                 <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">COLOR</h2>
-                    <div class="flex flex-wrap gap-1" id="[<%- gIndex + startIndex %>]variantsInfoContainer[color]">
+                    <div class="flex flex-wrap gap-1" id="[<%- glassesIndex %>]variantsInfoContainer[color]">
                         <% g.variants.forEach((variant, index) => { %>
-                            <div class="flex" id="[<%- gIndex + startIndex %>]productVariantInfo[<%- index %>]">
-                                <input class="peer form-radio rounded-md absolute hidden" type="radio" name="[<%- gIndex + startIndex %>]productVariantInfo"  id="[<%- gIndex + startIndex %>]productVariantInfoInput[color][<%- index %>]" value="<%- index %>" data-images='<%- JSON.stringify(variant.images) %>' <%- index === 0 ? "checked" : "" %>>
-                                <label style="background-color: <%- `#${('000000' + Number(variant.color).toString(16)).substr(-6)}` %>;"  id="[<%- gIndex + startIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- gIndex + startIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                            <div class="flex" id="[<%- glassesIndex %>]productVariantInfo[<%- index %>]">
+                                <input class="peer form-radio rounded-md absolute hidden" type="radio" name="[<%- glassesIndex %>]productVariantInfo"  id="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" value="<%- index %>" data-images='<%- JSON.stringify(variant.images) %>' <%- index === 0 ? "checked" : "" %>>
+                                <label style="background-color: <%- `#${('000000' + Number(variant.color).toString(16)).substr(-6)}` %>;"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
                             </div>
                         <% }) %>
                     </div>
@@ -54,30 +47,30 @@
                 <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">CATEGORIES</h2>
                     <div class="flex flex-wrap gap-1">
-                        <span id="[<%- gIndex + startIndex %>]productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-teal-400 text-teal-400 <%- g.categories.includes("unissex") ? "" : "hidden" %>">UNISSEX</span>
-                        <span id="[<%- gIndex + startIndex %>]productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 <%- g.categories.includes("men") ? "" : "hidden" %>">MEN</span>
-                        <span id="[<%- gIndex + startIndex %>]productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-purple-400 text-purple-400 <%- g.categories.includes("women") ? "" : "hidden" %>">WOMEN</span>
-                        <span id="[<%- gIndex + startIndex %>]productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-orange-400 text-orange-400 <%- g.categories.includes("kids") ? "" : "hidden" %>">KIDS</span>
+                        <span id="[<%- glassesIndex %>]productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-teal-400 text-teal-400 <%- g.categories.includes("unissex") ? "" : "hidden" %>">UNISSEX</span>
+                        <span id="[<%- glassesIndex %>]productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 <%- g.categories.includes("men") ? "" : "hidden" %>">MEN</span>
+                        <span id="[<%- glassesIndex %>]productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-purple-400 text-purple-400 <%- g.categories.includes("women") ? "" : "hidden" %>">WOMEN</span>
+                        <span id="[<%- glassesIndex %>]productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-orange-400 text-orange-400 <%- g.categories.includes("kids") ? "" : "hidden" %>">KIDS</span>
                     </div>
                 </div>
 
                 <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">MATERIALS</h2>
                     <div class="flex flex-wrap gap-1">
-                        <span id="[<%- gIndex + startIndex %>]productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-red-400 text-red-400 <%- g.materials.includes("acetate") ? "" : "hidden" %>">Acetate</span>
-                        <span id="[<%- gIndex + startIndex %>]productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-green-400 text-green-400 <%- g.materials.includes("stainless steel") ? "" : "hidden" %>">Stainless Steel</span>
-                        <span id="[<%- gIndex + startIndex %>]productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-blue-400 text-blue-400 <%- g.materials.includes("titanium") ? "" : "hidden" %>">Titanium</span>
-                        <span id="[<%- gIndex + startIndex %>]productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-pink-400 text-pink-400 <%- g.materials.includes("tr90") ? "" : "hidden" %>">Tr90</span>
+                        <span id="[<%- glassesIndex %>]productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-red-400 text-red-400 <%- g.materials.includes("acetate") ? "" : "hidden" %>">Acetate</span>
+                        <span id="[<%- glassesIndex %>]productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-green-400 text-green-400 <%- g.materials.includes("stainless steel") ? "" : "hidden" %>">Stainless Steel</span>
+                        <span id="[<%- glassesIndex %>]productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-blue-400 text-blue-400 <%- g.materials.includes("titanium") ? "" : "hidden" %>">Titanium</span>
+                        <span id="[<%- glassesIndex %>]productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-pink-400 text-pink-400 <%- g.materials.includes("tr90") ? "" : "hidden" %>">Tr90</span>
                     </div>
                 </div>
 
                 <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">DIMENSIONS</h2>
-                    <h3 id="[<%- gIndex + startIndex %>]productEyeInfo" class="before:content-['eye:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.eye %></h3>
-                    <h3 id="[<%- gIndex + startIndex %>]productBridgeInfo" class="before:content-['bridge:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.bridge %></h3>
-                    <h3 id="[<%- gIndex + startIndex %>]productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.temple %></h3>
+                    <h3 id="[<%- glassesIndex %>]productEyeInfo" class="before:content-['eye:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.eye %></h3>
+                    <h3 id="[<%- glassesIndex %>]productBridgeInfo" class="before:content-['bridge:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.bridge %></h3>
+                    <h3 id="[<%- glassesIndex %>]productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal"><%- g.dimensions.temple %></h3>
                 </div>                    
             </div>
         </div>
     <% } %> 
-<% }) %>
+<% } %>
