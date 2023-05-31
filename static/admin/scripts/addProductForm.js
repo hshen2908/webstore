@@ -7,7 +7,7 @@ addProductForm.addEventListener("submit", async (e) => {
         data["code"] = addProductForm.productCode.value;
         data["name"] = addProductForm.productName.value;
         data["price"] = addProductForm.productPrice.value;
-        data["quantity"] = addProductForm.productQuanfity.value;
+        data["quantity"] = addProductForm.productQuantity.value;
         data["hidden"] = addProductForm.productHidden.checked;
         data["onSale"] = addProductForm.productOnSale.checked;
         data["newArrival"] = addProductForm.productNewArrival.checked
@@ -39,7 +39,7 @@ addProductForm.addEventListener("submit", async (e) => {
         const variants = [];
         for (let i = 0; i < numberOfVariants; i++) {
             variants.push({
-                color: Number.parseInt(productVariant.color[i].value.substr(1), 16),
+                color: document.querySelector(`input[name="productVariant[color][${i}]"]:checked`).value,
                 images: productVariant.imagesData[i]
             });
         }

@@ -39,7 +39,7 @@
                         <div class="flex flex-wrap gap-1" id="variantsInfoContainer[color]">
                             <div class="flex" id="productVariantInfo[0]">
                                 <input class="peer form-radio rounded-md absolute hidden" type="radio" name="productVariantInfo"  id="productVariantInfoInput[color][0]" value="1" checked>
-                                <label  id="productVariantInfo[color][0]" for="productVariantInfoInput[color][0]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-4 border-double border-gray-400 peer-checked:border-blue-400"></label>
+                                <label  id="productVariantInfo[color][0]" for="productVariantInfoInput[color][0]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
                             </div>
                         </div>
                     </div>
@@ -266,8 +266,50 @@
                         <h3 class="text-black dark:text-white font-medium">Variants</h3>
                         <button type="button" class="text-sm font-medium bg-cyan-300 text-white p-2 rounded-md" id="addProductVariantButton">ADD VARIANT</button>
                         <div class="flex flex-wrap gap-2" id="productVariant[0]">
-                            <div class="overflow-hidden w-6 h-6 rounded-full b relative p-1 border-4 inline-block border-double">
-                                <input type="color" name="productVariant[color][0]" id="productVariant[color][0]" class="w-[175%] h-[175%] absolute -bottom-[0.3rem] -left-1">
+                            <div class="flex flex-col gap-1">
+                                <div class="flex" id="">
+                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright0Radio[0]" value="sla(0deg 0% 100%)">
+                                    <label style="background-color: hsla(0deg 0% 100%);" id="" for="productColorBright0Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
+                                <div class="flex" id="">
+                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark1Radio[0]" value="hsla(0deg, 0%, 0%" checked>
+                                    <label style="background-color: hsla(0deg, 0%, 0%)" id="" for="productColorDark1Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex" id="">
+                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright2Radio[0]" value="hsla(0deg 0% 33%)">
+                                    <label style="background-color: hsla(0deg 0% 33%);" id="" for="productColorBright2Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
+                                <div class="flex" id="">
+                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark3Radio[0]" value="hsla(0deg 0% 16%)">
+                                    <label style="background-color: hsla(0deg 0% 16%);" id="" for="productColorDark3Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
+                            </div>  
+                            <% for( let i = 0; i*30 <= 330; i++) { %>
+                                <div class="flex flex-col gap-1">
+                                    <div class="flex" id="">
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 33%)">
+                                        <label style="background-color: hsla(<%-i*30%>deg 100% 33%);" id="" for="productColorBright<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                    </div>
+                                    <div class="flex" id="">
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 16%)">
+                                        <label style="background-color: hsla(<%-i*30%>deg 100% 16%);" id="" for="productColorDark<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                    </div>
+                                </div>  
+                            <% } %>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex" id="">
+                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBrightTransparentRadio[0]" value="transparent">
+                                    <label style="background-image: 
+                                    linear-gradient(90deg, #999 4px, white 4px),
+                                    linear-gradient(90deg, white 4px, #999 4px),
+                                    linear-gradient(90deg, #999 4px, white 4px),
+                                linear-gradient(90deg, white 4px, #999 4px);
+                                background-position: 0 0, 0 4px, 0 8px, 0 12px;
+                                background-repeat: repeat-x;
+                                background-size: 8px 4px;" id="" for="productColorBrightTransparentRadio" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
                             </div>
                             <div class="flex align-middle">
                                 <input type="file" required name="productVariant[images][0]" id="productVariant[images][0]" multiple="true" accept="images/*" capture="environment">
@@ -275,7 +317,7 @@
                         </div>
                     </div>
     
-                    <button type="submit" class="text-xl font-medium bg-teal-300 text-white p-4 rounded-lg">
+                    <button type="submit" class="text-xl font-medium bg-rose-600 text-white p-4 rounded-lg">
                         ADD PRODUCT
                     </button>
                 </form>
@@ -283,6 +325,7 @@
         </div>
     </section>
 </main>
+<script src="/admin/scripts/ejs.min.js" defer></script>
 <script src="/admin/scripts/addProductForm.js" defer></script>
 <script src="/admin/scripts/addProductVariant.js" defer></script>
 <script src="/admin/scripts/updateProductDescription.js" defer></script>

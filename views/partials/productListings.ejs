@@ -38,7 +38,7 @@
                         <% g.variants.forEach((variant, index) => { %>
                             <div class="flex" id="[<%- glassesIndex %>]productVariantInfo[<%- index %>]">
                                 <input class="peer form-radio rounded-md absolute hidden" type="radio" name="[<%- glassesIndex %>]productVariantInfo"  id="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" value="<%- index %>" data-images='<%- JSON.stringify(variant.images) %>' <%- index === 0 ? "checked" : "" %>>
-                                <label style="background-color: <%- `#${('000000' + Number(variant.color).toString(16)).substr(-6)}` %>;"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                <label style="background-color: <%- variant.color; %>"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
                             </div>
                         <% }) %>
                     </div>

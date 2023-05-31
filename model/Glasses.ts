@@ -11,7 +11,7 @@ interface IGlasses extends IProduct {
     materials: Array<Materials>,
     variants: [
         {
-            color: number,
+            color: string,
             images: [
                 {
                     url: string,
@@ -82,8 +82,7 @@ const schemaProperties = {
     variants: [
         {
             color: {
-                type: Number,
-                min: 0,
+                type: String,
             },
             images: [
                 {
