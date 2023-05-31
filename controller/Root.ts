@@ -3,10 +3,21 @@ import {GlassesModel} from "../model/Glasses";
 
 function getProducts(filter, includeHidden: boolean): Promise<any> {
     const modelFilter = {};
-    (filter?.categories?.length) && (filter.categories.length !== 0) && (modelFilter["categories"] = filter.categories);
-    (filter?.materials?.length) && (filter.materials.length !== 0) && (modelFilter["materials"] = filter.materials);
-    (filter?.types?.length) && (filter.types.length !== 0) && (modelFilter["type"] = filter.types);
-    (filter?.shapes?.length) && (filter.shapes.length !== 0) && (modelFilter["shape"] = filter.shapes);
+    const $and = [{}, {}, {}, {}];
+    (filter?.categories?.length) && (filter.categories.length !== 0) && ($and[0]["$or"] = filter.categories.map((category) => {
+        return {categories: category};
+    }));
+    (filter?.materials?.length) && (filter.materials.length !== 0) && ($and[1]["$or"] = filter.materials.map((material) => {
+        return {materials: material};
+    }));
+    (filter?.types?.length) && (filter.types.length !== 0) && ($and[2]["$or"] = filter.types.map((type) => {
+        return {type: type};
+    }));
+    (filter?.shapes?.length) && (filter.shapes.length !== 0) && ($and[3]["$or"] = filter.shapes.map((shape) => {
+        return {shape: shape};
+    }));
+    modelFilter["$and"] = $and;
+
     modelFilter["dimensions.eye"] = {
         $lte: Number.parseInt(filter?.dimensions?.eye.max) || 10000,
         $gte: Number.parseInt(filter?.dimensions?.eye.min) || 0,
@@ -23,7 +34,7 @@ function getProducts(filter, includeHidden: boolean): Promise<any> {
     (filter.newArrival) && (modelFilter["newArrival"] = filter.newArrival);
     (filter.onSale) && (modelFilter["onSale"] = filter.onSale);
     includeHidden && (modelFilter["hidden"] = includeHidden);
-
+    console.log(modelFilter)
     return GlassesModel.find(modelFilter);
 }
 
@@ -43,7 +54,6 @@ rootRouter.post("/products", async (req: Request, res: Response) => {
     const startIndex = filter.startIndex;
     const initialMaxProductCount = 64;
     const glasses = await getProducts(filter, false);
-    console.log(glasses)
     res.render("./partials/productListings", {glasses, startIndex, initialMaxProductCount},
         (err: Error, html: string) => {
             res.status(200).send(JSON.stringify({

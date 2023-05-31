@@ -24,7 +24,7 @@
                     <h2 id="productHiddenInfo" class="font-medium py-1 bg-slate-500 inline-block px-8 self-start hidden">HIDDEN</h2>
                 </div>
                 
-                <div class="w-1/3 p-4 flex flex-col justify-between bg-gray-100 dark:bg-gray-700 my-1 shadow-sm rounded-r-lg">
+                <div class="w-1/3 p-4 flex flex-col justify-between my-1 shadow-sm rounded-r-lg">
                     <div class="flex justify-between" style="container-type: inline-size;">
                         <h2 id="productNameInfo" class="overflow-ellipsis overflow-hidden text-[16cqw] font-medium block">Name</h2>
                         <div class="w-[40cqw]">
@@ -72,7 +72,7 @@
                     </div>                    
                 </div>
             </div>
-            <div class="lg:w-1/2 aspect-[3/2] overflow-y-auto overflow-x-hidden bg-white dark:bg-black rounded-lg shadow-sm">
+            <div class="lg:w-1/2 aspect-[3/2] overflow-y-auto overflow-x-hidden rounded-lg shadow-sm">
                 <form action="/admin/products" id="addProductForm" method="post" class="flex flex-wrap gap-4 p-4">
                     <div>
                         <label for="productCode">Code: </label>
@@ -266,7 +266,7 @@
                         <h3 class="text-black dark:text-white font-medium">Variants</h3>
                         <button type="button" class="text-sm font-medium bg-cyan-300 text-white p-2 rounded-md" id="addProductVariantButton">ADD VARIANT</button>
                         <div class="flex flex-wrap gap-2" id="productVariant[0]">
-                            <div class="overflow-hidden w-6 h-6 rounded-full border-gray-300 bg-black relative p-1 border-4 inline-block border-double">
+                            <div class="overflow-hidden w-6 h-6 rounded-full b relative p-1 border-4 inline-block border-double">
                                 <input type="color" name="productVariant[color][0]" id="productVariant[color][0]" class="w-[175%] h-[175%] absolute -bottom-[0.3rem] -left-1">
                             </div>
                             <div class="flex align-middle">
