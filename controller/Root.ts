@@ -1,4 +1,4 @@
-import express, {Request, Response, Router} from "express";
+import express, {NextFunction, Request, Response, Router} from "express";
 import {GlassesModel} from "../model/Glasses";
 
 function getProducts(filter, includeHidden: boolean): Promise<any> {
@@ -45,30 +45,39 @@ const rootRouter: Router = Router();
 
 rootRouter.use(express.json());
 
-rootRouter.get("/", async (req: Request, res: Response) => {
-    const startIndex = 0;
-    const initialMaxProductCount = 64
-    const glasses = await getProducts({}, false);
-    res.render("./root", {title: "Home", glasses, startIndex, initialMaxProductCount});
+rootRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const startIndex = 0;
+        const initialMaxProductCount = 64
+        const glasses = await getProducts({}, false);
+        res.render("./root/root", {title: "Home", glasses, startIndex, initialMaxProductCount});
+    } catch (err) {
+        next(err);
+    }
 });
 
-rootRouter.post("/products", async (req: Request, res: Response) => {
-    const filter = req.body;
-    const startIndex = filter.startIndex;
-    const initialMaxProductCount = 64;
-    const glasses = await getProducts(filter, false);
-    res.render("./partials/productListings", {glasses, startIndex, initialMaxProductCount},
-        (err: Error, html: string) => {
-            res.status(200).send(JSON.stringify({
-                html,
-                totalProductCount: glasses.length,
-                responseProductCount: (glasses.length - startIndex < initialMaxProductCount ? glasses.length - startIndex : initialMaxProductCount)
-            }));
-        });
+rootRouter.post("/products", async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const filter = req.body;
+        const startIndex = filter.startIndex;
+        const initialMaxProductCount = 64;
+        const glasses = await getProducts(filter, false);
+        res.render("./root/partials/productListings", {glasses, startIndex, initialMaxProductCount},
+            (err: Error, html: string) => {
+                err && next(err);
+                res.status(200).send(JSON.stringify({
+                    html,
+                    totalProductCount: glasses.length,
+                    responseProductCount: (glasses.length - startIndex < initialMaxProductCount ? glasses.length - startIndex : initialMaxProductCount)
+                }));
+            });
+    } catch (err) {
+        next(err);
+    }
 })
 
 rootRouter.get("/contact", (req: Request, res: Response) => {
-    res.render("./contact", {title: "Contact"});
+    res.render("./root/contact", {title: "Contact"});
 });
 
 export {rootRouter};

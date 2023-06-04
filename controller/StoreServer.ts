@@ -6,19 +6,19 @@ import {NextFunction, Request, Response} from "express";
 
 require("dotenv").config();
 
-const config = {
+const auth0Config = {
     authRequired: false,
     auth0Logout: true,
     secret: process.env.AUTH_SECRET,
-    baseURL: 'http://localhost:3000',
-    clientID: '9CAuBh7wc3ehHYzymSIfajUw4Lv8X6HW',
-    issuerBaseURL: 'https://dev-trtfma77joc55las.us.auth0.com'
+    baseURL: process.env.APPLICATION_BASE_URL,
+    clientID: process.env.APPLICATION_CLIENT_ID,
+    issuerBaseURL: process.env.APPLICATION_ISSUER_BASE_URL,
 };
 
 export class StoreServer extends Server {
-    initRouters() {
+    initServer() {
         // auth router attaches /login, /logout, and /callback routes to the baseURL
-        this.app.use(auth(config));
+        this.app.use(auth(auth0Config));
         // req.isAuthenticated is provided from the auth router
         this.app.use((req: Request, res: Response, next: NextFunction) => {
             res.locals.isAuthenticated = req.oidc.isAuthenticated();

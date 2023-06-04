@@ -8,7 +8,7 @@ const express = require("express");
 // const httpLogger: HttpLogger = require("pino-http")();
 const path = require("path");
 const defaultErrorHandler: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
-    res.status(404).render("./pageNotFound", {title: "404 Not Found"});
+    res.status(404).render("./root/pageNotFound", {title: "404 Not Found"});
 }
 
 export abstract class Server {
@@ -34,7 +34,7 @@ export abstract class Server {
         this.app.set("view engine", viewEngine);
         this.app.set("view options", {filename: true});
         this.app.use(express.static(path.join(__dirname, "..", "static", "public")));
-        this.initRouters();
+        this.initServer();
         this.app.use(defaultErrorHandler);
     }
 
@@ -61,7 +61,7 @@ export abstract class Server {
         onClose && onClose(err);
     }
 
-    abstract initRouters();
+    abstract initServer();
 
     registerRouter(route: string, router: Router): void {
         this.app.use(route, router);

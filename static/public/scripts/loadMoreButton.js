@@ -2,8 +2,6 @@ const loadMoreButton = document.getElementById("loadMoreButton");
 const loadMoreText = document.getElementById("loadMoreText");
 const loadMoreSpinner = document.getElementById("loadMoreSpinner");
 
-
-
 loadMoreButton.addEventListener("click", async (e) => {
     loadMoreButton.style.width = "56px"
     loadMoreText.classList.add("hidden");

@@ -6,6 +6,8 @@ module.exports = {
   safelist: [
     'animate-dropdownOpen',
     'animate-dropdownClose',
+    'z-10',
+    'scale-150',
     {
       pattern: /bg-+/,
     }

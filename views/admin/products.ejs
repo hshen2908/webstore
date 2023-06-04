@@ -1,332 +1,345 @@
-<%- include("../partials/header") %>
-<main class="flex-grow">
-    <section class="max-w-none mx-auto p-4 flex-col justify-between">
-        <h2 class="text-black dark:text-white text-8xl font-medium">Admin Products</h2>
-        <div class="flex flex-row m-4 flex-wrap lg:flex-nowrap gap-4">
-            <div class="border-none rounded-lg flex min-w-full lg:min-w-0 lg:w-1/2 relative">
-                <!-- <img src="" alt="" class="rounded-lg w-2/3 shadow-sm aspect-square object-cover" loading="lazy"> -->
-                <div class="relative rounded-lg w-2/3 shadow-sm flex justify-center">
-                    <div id="variantsInfoContainerSelector[images]" class="absolute flex justify-between gap-1 bottom-4">
-                        <a href="#1" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
-                        <a href="#2" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
-                        <a href="#3" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
+<%- include("./partials/header") %>
+<main class="flex flex-grow flex-row items-center">
+    <div class="flex basis-2/12 self-stretch">
+        <div class="">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus perspiciatis soluta vel debitis dolorem rerum iure nostrum voluptates tempore iusto. Beatae animi obcaecati eum ipsum excepturi, distinctio quam repellendus necessitatibus.
+            Unde eius recusandae ducimus accusamus laboriosam itaque dolor incidunt aliquam eligendi excepturi! Nostrum fugiat aliquam delectus facilis corporis provident dolores similique non, quaerat quis dicta, praesentium suscipit magni adipisci eaque.
+            ptatibus dolorem voe veritatis aperiam placeat error modi temporibus beatae ipsam voluptatem incidunt aliquid corrupti deserunt! Ut omnis earum iusto quaerat, placeat dolorem libero sint consectetur nulla voluptas.
+        
+        </div>
+    </div>
+    <div class="basis-10/12 self-stretch">
+        <section class="max-w-none mx-auto p-4 flex-col justify-between overflow-y-auto overflow-x-hidden h-[92dvh]">
+            <div class="flex w-auto h-[3000px] bg-black">
+    
+            </div>
+            <h2 class="text-black dark:text-white text-8xl font-medium">Admin Products</h2>
+            <div class="flex flex-row m-4 flex-wrap lg:flex-nowrap gap-4">
+                <div class="border-none rounded-lg flex min-w-full lg:min-w-0 lg:w-1/2 relative">
+                    <!-- <img src="" alt="" class="rounded-lg w-2/3 shadow-sm aspect-square object-cover" loading="lazy"> -->
+                    <div class="relative rounded-lg w-2/3 shadow-sm flex justify-center">
+                        <div id="variantsInfoContainerSelector[images]" class="absolute flex justify-between gap-1 bottom-4">
+                            <a href="#1" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
+                            <a href="#2" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
+                            <a href="#3" class="text-black opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>
+                        </div>
+                        <div id="variantsInfoContainer[images]" class="rounded-lg min-w-full shadow-sm aspect-square object-cover overflow-hidden overflow-x-hidden snap-x snap-mandatory scroll-smooth flex gap-x-4">
+                            <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" class="rounded-lg min-w-full shadow-sm bg-gray-800 aspect-square object-cover snap-center" id="1"></img>
+                            <div class="rounded-lg min-w-full shadow-sm bg-gray-400 aspect-square object-cover snap-center" id="2"></div>
+                            <div class="rounded-lg min-w-full shadow-sm bg-gray-200 aspect-square object-cover snap-center" id="3"></div>
+                        </div>
                     </div>
-                    <div id="variantsInfoContainer[images]" class="rounded-lg min-w-full shadow-sm aspect-square object-cover overflow-hidden overflow-x-hidden snap-x snap-mandatory scroll-smooth flex gap-x-4">
-                        <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" class="rounded-lg min-w-full shadow-sm bg-gray-800 aspect-square object-cover snap-center" id="1"></img>
-                        <div class="rounded-lg min-w-full shadow-sm bg-gray-400 aspect-square object-cover snap-center" id="2"></div>
-                        <div class="rounded-lg min-w-full shadow-sm bg-gray-200 aspect-square object-cover snap-center" id="3"></div>
+                    
+                    <div class="absolute -left-1 -top-1 flex flex-col">
+                        <h2 id="productNewArrivalInfo" class="font-medium py-1 bg-rose-500 inline-block px-8 hidden">NEW ARRIVAL</h2>
+                        <h2 id="productOnSaleInfo" class="font-medium py-1 bg-yellow-500 inline-block px-8 self-start hidden">ON SALE</h2>                    
+                        <h2 id="productHiddenInfo" class="font-medium py-1 bg-slate-500 inline-block px-8 self-start hidden">HIDDEN</h2>
+                    </div>
+                    
+                    <div class="w-1/3 p-4 flex flex-col justify-between my-1 shadow-sm rounded-r-lg">
+                        <div class="flex justify-between" style="container-type: inline-size;">
+                            <h2 id="productNameInfo" class="overflow-ellipsis overflow-hidden text-[16cqw] font-medium block">Name</h2>
+                            <div class="w-[40cqw]">
+                                <h2 id="productPriceInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block before:content-['R$\00a0']">Price</h2>
+                                <h2 id="productTypeInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block capitalize">TYPE</h2>
+                            </div>
+                            
+                        </div>
+    
+                        <div class="border-t-2" style="container-type: inline-size">
+                            <h2 class="text-[8cqw] font-medium py-1">COLOR</h2>
+                            <div class="flex flex-wrap gap-1" id="variantsInfoContainer[color]">
+                                <div class="flex" id="productVariantInfo[0]">
+                                    <input class="peer form-radio rounded-md absolute hidden" type="radio" name="productVariantInfo"  id="productVariantInfoInput[color][0]" value="1" checked>
+                                    <label  id="productVariantInfo[color][0]" for="productVariantInfoInput[color][0]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="border-t-2" style="container-type: inline-size">
+                            <h2 class="text-[8cqw] font-medium py-1">CATEGORIES</h2>
+                            <div class="flex flex-wrap gap-1">
+                                <span id="productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-teal-400 text-teal-400 hidden">UNISSEX</span>
+                                <span id="productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 hidden">MEN</span>
+                                <span id="productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-purple-400 text-purple-400 hidden">WOMEN</span>
+                                <span id="productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-orange-400 text-orange-400 hidden">KIDS</span>
+                            </div>
+                        </div>
+    
+                        <div class="border-t-2" style="container-type: inline-size">
+                            <h2 class="text-[8cqw] font-medium py-1">MATERIALS</h2>
+                            <div class="flex flex-wrap gap-1">
+                                <span id="productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-red-400 text-red-400 hidden">Acetate</span>
+                                <span id="productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-green-400 text-green-400 hidden">Stainless Steel</span>
+                                <span id="productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-blue-400 text-blue-400 hidden">Titanium</span>
+                                <span id="productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-pink-400 text-pink-400 hidden">Tr90</span>
+                            </div>
+                        </div>
+    
+                        <div class="border-t-2" style="container-type: inline-size">
+                            <h2 class="text-[8cqw] font-medium py-1">DIMENSIONS</h2>
+                            <h3 id="productEyeInfo" class="before:content-['eye:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
+                            <h3 id="productBridgeInfo" class="before:content-['bridge:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
+                            <h3 id="productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
+                        </div>                    
                     </div>
                 </div>
-                
-                <div class="absolute -left-1 -top-1 flex flex-col">
-                    <h2 id="productNewArrivalInfo" class="font-medium py-1 bg-rose-500 inline-block px-8 hidden">NEW ARRIVAL</h2>
-                    <h2 id="productOnSaleInfo" class="font-medium py-1 bg-yellow-500 inline-block px-8 self-start hidden">ON SALE</h2>                    
-                    <h2 id="productHiddenInfo" class="font-medium py-1 bg-slate-500 inline-block px-8 self-start hidden">HIDDEN</h2>
-                </div>
-                
-                <div class="w-1/3 p-4 flex flex-col justify-between my-1 shadow-sm rounded-r-lg">
-                    <div class="flex justify-between" style="container-type: inline-size;">
-                        <h2 id="productNameInfo" class="overflow-ellipsis overflow-hidden text-[16cqw] font-medium block">Name</h2>
-                        <div class="w-[40cqw]">
-                            <h2 id="productPriceInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block before:content-['R$\00a0']">Price</h2>
-                            <h2 id="productTypeInfo" class="overflow-ellipsis overflow-hidden text-[8cqw] font-medium opacity-70 block capitalize">TYPE</h2>
+                <div class="lg:w-1/2 aspect-[3/2] overflow-y-auto overflow-x-hidden rounded-lg shadow-sm">
+                    <form action="/admin/products" id="addProductForm" method="post" class="flex flex-wrap gap-4 p-4">
+                        <div>
+                            <label for="productCode">Code: </label>
+                            <input required type="text" name="productCode" id="productCode" class="form-input rounded-md text-black">
+                        </div>
+    
+                        <div>
+                            <label for="productName">Name: </label>
+                            <input required type="text" name="productName" id="productName" class="form-input rounded-md text-black">
                         </div>
                         
-                    </div>
-
-                    <div class="border-t-2" style="container-type: inline-size">
-                        <h2 class="text-[8cqw] font-medium py-1">COLOR</h2>
-                        <div class="flex flex-wrap gap-1" id="variantsInfoContainer[color]">
-                            <div class="flex" id="productVariantInfo[0]">
-                                <input class="peer form-radio rounded-md absolute hidden" type="radio" name="productVariantInfo"  id="productVariantInfoInput[color][0]" value="1" checked>
-                                <label  id="productVariantInfo[color][0]" for="productVariantInfoInput[color][0]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
-                            </div>
+                        <div>
+                            <label for="productPrice">Price: </label>
+                            <input required type="number" name="productPrice" id="productPrice" class="form-input rounded-md text-black" min="0">
                         </div>
-                    </div>
-
-                    <div class="border-t-2" style="container-type: inline-size">
-                        <h2 class="text-[8cqw] font-medium py-1">CATEGORIES</h2>
-                        <div class="flex flex-wrap gap-1">
-                            <span id="productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-teal-400 text-teal-400 hidden">UNISSEX</span>
-                            <span id="productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 hidden">MEN</span>
-                            <span id="productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-purple-400 text-purple-400 hidden">WOMEN</span>
-                            <span id="productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-orange-400 text-orange-400 hidden">KIDS</span>
+    
+                        <div>
+                            <label for="productQuantity">Quantity: </label>
+                            <input required type="number" name="productQuantity" id="productQuantity" class="form-input rounded-md text-black" min="0">
                         </div>
-                    </div>
-
-                    <div class="border-t-2" style="container-type: inline-size">
-                        <h2 class="text-[8cqw] font-medium py-1">MATERIALS</h2>
-                        <div class="flex flex-wrap gap-1">
-                            <span id="productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-red-400 text-red-400 hidden">Acetate</span>
-                            <span id="productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-green-400 text-green-400 hidden">Stainless Steel</span>
-                            <span id="productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-blue-400 text-blue-400 hidden">Titanium</span>
-                            <span id="productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-pink-400 text-pink-400 hidden">Tr90</span>
-                        </div>
-                    </div>
-
-                    <div class="border-t-2" style="container-type: inline-size">
-                        <h2 class="text-[8cqw] font-medium py-1">DIMENSIONS</h2>
-                        <h3 id="productEyeInfo" class="before:content-['eye:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
-                        <h3 id="productBridgeInfo" class="before:content-['bridge:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
-                        <h3 id="productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] text-[8cqw] font-normal">0</h3>
-                    </div>                    
-                </div>
-            </div>
-            <div class="lg:w-1/2 aspect-[3/2] overflow-y-auto overflow-x-hidden rounded-lg shadow-sm">
-                <form action="/admin/products" id="addProductForm" method="post" class="flex flex-wrap gap-4 p-4">
-                    <div>
-                        <label for="productCode">Code: </label>
-                        <input required type="text" name="productCode" id="productCode" class="form-input rounded-md text-black">
-                    </div>
-
-                    <div>
-                        <label for="productName">Name: </label>
-                        <input required type="text" name="productName" id="productName" class="form-input rounded-md text-black">
-                    </div>
-                    
-                    <div>
-                        <label for="productPrice">Price: </label>
-                        <input required type="number" name="productPrice" id="productPrice" class="form-input rounded-md text-black" min="0">
-                    </div>
-
-                    <div>
-                        <label for="productQuantity">Quantity: </label>
-                        <input required type="number" name="productQuantity" id="productQuantity" class="form-input rounded-md text-black" min="0">
-                    </div>
-
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Modifiers</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="flex">
-                                <input type="checkbox" name="productNewArrival" id="productNewArrival" class="peer form-checkbox rounded-md hidden">
-                                <label for="productNewArrival" class="px-4 py-2 border-2 border-rose-400 text-rose-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">NEW ARRIVAL</label>
-                            </div>
-                            
-                            <div class="flex">
-                                <input type="checkbox" name="productOnSale" id="productOnSale" class="peer form-checkbox rounded-md hidden">
-                                <label for="productOnSale" class="px-4 py-2 border-2 border-yellow-400 text-yellow-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ON SALE</label>
-                            </div>
-
-                            <div class="flex">
-                                <input type="checkbox" name="productHidden" id="productHidden" class="peer form-checkbox rounded-md hidden">
-                                <label for="productHidden" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">HIDDEN</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Dimensions</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <div>
-                                <label for="productEye">Eye: </label>
-                                <input required type="number" name="productEye" id="productEye" class="form-input rounded-md text-black" min="0" value="0">
-                            </div>
-                            <div>
-                                <label for="productBridge">Bridge: </label>
-                                <input required type="number" name="productBridge" id="productBridge" class="form-input rounded-md text-black" min="0" value="0">
-                            </div>
-                            <div>
-                                <label for="productTemple">Temple: </label>
-                                <input required type="number" name="productTemple" id="productTemple" class="form-input rounded-md text-black" min="0" value="0">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Categories</h3>
-                        <div class="flex flex-wrap gap-2 my-2">
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productUnissex" id="productUnissex" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productUnissex" class="px-4 py-2 border-2 border-teal-400 text-teal-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">UNISSEX</label>
+    
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Modifiers</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="flex">
+                                    <input type="checkbox" name="productNewArrival" id="productNewArrival" class="peer form-checkbox rounded-md hidden">
+                                    <label for="productNewArrival" class="px-4 py-2 border-2 border-rose-400 text-rose-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">NEW ARRIVAL</label>
                                 </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productMen" id="productMen" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productMen" class="px-4 py-2 border-2 border-cyan-400 text-cyan-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">MEN</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productWomen" id="productWomen" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productWomen" class="px-4 py-2 border-2 border-purple-400 text-purple-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WOMEN</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productKids" id="productKids" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productKids" class="px-4 py-2 border-2 border-orange-400 text-orange-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">KIDS</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Materials</h3>
-                        <div class="flex flex-wrap gap-2 my-2">
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productAcetate" id="productAcetate" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productAcetate" class="px-4 py-2 border-2 border-red-400 text-red-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Acetate</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productStainlessSteel" id="productStainlessSteel" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productStainlessSteel" class="px-4 py-2 border-2 border-green-400 text-green-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Stainless Steel</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productTitanium" id="productTitanium" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productTitanium" class="px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Titanium</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div>
-                                    <input type="checkbox" name="productTr90" id="productTr90" class="peer form-checkbox rounded-md hidden">
-                                    <label for="productTr90" class="px-4 py-2 border-2 border-pink-400 text-pink-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Tr90</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Shape</h3>
-                        <div class="flex flex-wrap gap-2 relative">
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="round" value="round" class="peer form-radio rounded-md absolute">
-                                <label for="round" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ROUND</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="catEye" value="cat eye" class="peer form-radio rounded-md absolute">
-                                <label for="catEye" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CAT EYE</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="rectangle" value="rectangle" class="peer form-radio rounded-md absolute">
-                                <label for="rectangle" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">RECTANGLE</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="wayfare" value="wayfare" class="peer form-radio rounded-md absolute">
-                                <label for="wayfare" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WAYFARE</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="square" value="square" class="peer form-radio rounded-md absolute">
-                                <label for="square" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SQUARE</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="oval" value="oval" class="peer form-radio rounded-md absolute">
-                                <label for="oval" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">OVAL</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="geometric" value="geometric" class="peer form-radio rounded-md absolute">
-                                <label for="geometric" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">GEOMETRIC</label>   
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="aviator" value="aviator" class="peer form-radio rounded-md absolute">
-                                <label for="aviator" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">AVIATOR</label>    
-                            </div>
                                 
-                            <div class="flex">
-                                <input required type="radio" name="productShape" id="clubmaster" value="clubmaster" class="peer form-radio rounded-md absolute">
-                                <label for="clubmaster" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLUBMASTER</label>
+                                <div class="flex">
+                                    <input type="checkbox" name="productOnSale" id="productOnSale" class="peer form-checkbox rounded-md hidden">
+                                    <label for="productOnSale" class="px-4 py-2 border-2 border-yellow-400 text-yellow-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ON SALE</label>
+                                </div>
+    
+                                <div class="flex">
+                                    <input type="checkbox" name="productHidden" id="productHidden" class="peer form-checkbox rounded-md hidden">
+                                    <label for="productHidden" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">HIDDEN</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-black dark:text-white font-medium">Type</h3>
-                        <div class="flex flex-wrap gap-2 relative">
-                            <div class="flex">
-                                <input required type="radio" name="productType" id="productEyeglasses" value="eyeglasses" class="peer form-radio rounded-md absolute">
-                                <label for="productEyeglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">EYEGLASSES</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productType" id="productSunglasses" value="sunglasses" class="peer form-radio rounded-md absolute">
-                                <label for="productSunglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SUNGLASSES</label>    
-                            </div>
-                            
-                            <div class="flex">
-                                <input required type="radio" name="productType" id="productClipOn" value="clip on" class="peer form-radio rounded-md absolute">
-                                <label for="productClipOn" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLIP ON</label>    
+    
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Dimensions</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <div>
+                                    <label for="productEye">Eye: </label>
+                                    <input required type="number" name="productEye" id="productEye" class="form-input rounded-md text-black" min="0" value="0">
+                                </div>
+                                <div>
+                                    <label for="productBridge">Bridge: </label>
+                                    <input required type="number" name="productBridge" id="productBridge" class="form-input rounded-md text-black" min="0" value="0">
+                                </div>
+                                <div>
+                                    <label for="productTemple">Temple: </label>
+                                    <input required type="number" name="productTemple" id="productTemple" class="form-input rounded-md text-black" min="0" value="0">
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2" id="variantsContainer">
-                        <h3 class="text-black dark:text-white font-medium">Variants</h3>
-                        <button type="button" class="text-sm font-medium bg-cyan-300 text-white p-2 rounded-md" id="addProductVariantButton">ADD VARIANT</button>
-                        <div class="flex flex-wrap gap-2" id="productVariant[0]">
-                            <div class="flex flex-col gap-1">
-                                <div class="flex" id="">
-                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright0Radio[0]" value="sla(0deg 0% 100%)">
-                                    <label style="background-color: hsla(0deg 0% 100%);" id="" for="productColorBright0Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Categories</h3>
+                            <div class="flex flex-wrap gap-2 my-2">
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productUnissex" id="productUnissex" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productUnissex" class="px-4 py-2 border-2 border-teal-400 text-teal-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">UNISSEX</label>
+                                    </div>
                                 </div>
-                                <div class="flex" id="">
-                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark1Radio[0]" value="hsla(0deg, 0%, 0%" checked>
-                                    <label style="background-color: hsla(0deg, 0%, 0%)" id="" for="productColorDark1Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productMen" id="productMen" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productMen" class="px-4 py-2 border-2 border-cyan-400 text-cyan-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">MEN</label>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productWomen" id="productWomen" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productWomen" class="px-4 py-2 border-2 border-purple-400 text-purple-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WOMEN</label>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productKids" id="productKids" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productKids" class="px-4 py-2 border-2 border-orange-400 text-orange-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">KIDS</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col gap-1">
-                                <div class="flex" id="">
-                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright2Radio[0]" value="hsla(0deg 0% 33%)">
-                                    <label style="background-color: hsla(0deg 0% 33%);" id="" for="productColorBright2Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                        </div>
+    
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Materials</h3>
+                            <div class="flex flex-wrap gap-2 my-2">
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productAcetate" id="productAcetate" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productAcetate" class="px-4 py-2 border-2 border-red-400 text-red-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Acetate</label>
+                                    </div>
                                 </div>
-                                <div class="flex" id="">
-                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark3Radio[0]" value="hsla(0deg 0% 16%)">
-                                    <label style="background-color: hsla(0deg 0% 16%);" id="" for="productColorDark3Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productStainlessSteel" id="productStainlessSteel" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productStainlessSteel" class="px-4 py-2 border-2 border-green-400 text-green-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Stainless Steel</label>
+                                    </div>
                                 </div>
-                            </div>  
-                            <% for( let i = 0; i*30 <= 330; i++) { %>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productTitanium" id="productTitanium" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productTitanium" class="px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Titanium</label>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div>
+                                        <input type="checkbox" name="productTr90" id="productTr90" class="peer form-checkbox rounded-md hidden">
+                                        <label for="productTr90" class="px-4 py-2 border-2 border-pink-400 text-pink-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">Tr90</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Shape</h3>
+                            <div class="flex flex-wrap gap-2 relative">
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="round" value="round" class="peer form-radio rounded-md absolute">
+                                    <label for="round" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">ROUND</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="catEye" value="cat eye" class="peer form-radio rounded-md absolute">
+                                    <label for="catEye" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CAT EYE</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="rectangle" value="rectangle" class="peer form-radio rounded-md absolute">
+                                    <label for="rectangle" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">RECTANGLE</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="wayfare" value="wayfare" class="peer form-radio rounded-md absolute">
+                                    <label for="wayfare" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">WAYFARE</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="square" value="square" class="peer form-radio rounded-md absolute">
+                                    <label for="square" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SQUARE</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="oval" value="oval" class="peer form-radio rounded-md absolute">
+                                    <label for="oval" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">OVAL</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="geometric" value="geometric" class="peer form-radio rounded-md absolute">
+                                    <label for="geometric" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">GEOMETRIC</label>   
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="aviator" value="aviator" class="peer form-radio rounded-md absolute">
+                                    <label for="aviator" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">AVIATOR</label>    
+                                </div>
+                                    
+                                <div class="flex">
+                                    <input required type="radio" name="productShape" id="clubmaster" value="clubmaster" class="peer form-radio rounded-md absolute">
+                                    <label for="clubmaster" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLUBMASTER</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-black dark:text-white font-medium">Type</h3>
+                            <div class="flex flex-wrap gap-2 relative">
+                                <div class="flex">
+                                    <input required type="radio" name="productType" id="productEyeglasses" value="eyeglasses" class="peer form-radio rounded-md absolute">
+                                    <label for="productEyeglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">EYEGLASSES</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productType" id="productSunglasses" value="sunglasses" class="peer form-radio rounded-md absolute">
+                                    <label for="productSunglasses" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">SUNGLASSES</label>    
+                                </div>
+                                
+                                <div class="flex">
+                                    <input required type="radio" name="productType" id="productClipOn" value="clip on" class="peer form-radio rounded-md absolute">
+                                    <label for="productClipOn" class="px-4 py-2 border-2 border-slate-400 text-slate-400 font-medium rounded-full opacity-50 peer-checked:opacity-100">CLIP ON</label>    
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="flex flex-wrap gap-2" id="variantsContainer">
+                            <h3 class="text-black dark:text-white font-medium">Variants</h3>
+                            <button type="button" class="text-sm font-medium bg-cyan-300 text-white p-2 rounded-md" id="addProductVariantButton">ADD VARIANT</button>
+                            <div class="flex flex-wrap gap-2" id="productVariant[0]">
                                 <div class="flex flex-col gap-1">
                                     <div class="flex" id="">
-                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 33%)">
-                                        <label style="background-color: hsla(<%-i*30%>deg 100% 33%);" id="" for="productColorBright<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright0Radio[0]" value="hsla(0deg 0% 100%)">
+                                        <label style="background-color: hsla(0deg 0% 100%);" id="" for="productColorBright0Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
                                     </div>
                                     <div class="flex" id="">
-                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 16%)">
-                                        <label style="background-color: hsla(<%-i*30%>deg 100% 16%);" id="" for="productColorDark<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark1Radio[0]" value="hsla(0deg, 0%, 0%" checked>
+                                        <label style="background-color: hsla(0deg, 0%, 0%)" id="" for="productColorDark1Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <div class="flex" id="">
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright2Radio[0]" value="hsla(0deg 0% 33%)">
+                                        <label style="background-color: hsla(0deg 0% 33%);" id="" for="productColorBright2Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                    </div>
+                                    <div class="flex" id="">
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark3Radio[0]" value="hsla(0deg 0% 16%)">
+                                        <label style="background-color: hsla(0deg 0% 16%);" id="" for="productColorDark3Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
                                     </div>
                                 </div>  
-                            <% } %>
-                            <div class="flex flex-col gap-1">
-                                <div class="flex" id="">
-                                    <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBrightTransparentRadio[0]" value="transparent">
-                                    <label style="background-image: 
-                                    linear-gradient(90deg, #999 4px, white 4px),
-                                    linear-gradient(90deg, white 4px, #999 4px),
-                                    linear-gradient(90deg, #999 4px, white 4px),
-                                linear-gradient(90deg, white 4px, #999 4px);
-                                background-position: 0 0, 0 4px, 0 8px, 0 12px;
-                                background-repeat: repeat-x;
-                                background-size: 8px 4px;" id="" for="productColorBrightTransparentRadio" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                <% for( let i = 0; i*30 <= 330; i++) { %>
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex" id="">
+                                            <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBright<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 33%)">
+                                            <label style="background-color: hsla(<%-i*30%>deg 100% 33%);" id="" for="productColorBright<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                        </div>
+                                        <div class="flex" id="">
+                                            <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorDark<%-i+4%>Radio[0]" value="hsla(<%-i*30%>deg 100% 16%)">
+                                            <label style="background-color: hsla(<%-i*30%>deg 100% 16%);" id="" for="productColorDark<%-i+4%>Radio[0]" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                        </div>
+                                    </div>  
+                                <% } %>
+                                <div class="flex flex-col gap-1">
+                                    <div class="flex" id="">
+                                        <input class="productColorsRadio peer form-radio rounded-md absolute hidden" type="radio" name="productVariant[color][0]"  id="productColorBrightTransparentRadio[0]" value="transparent">
+                                        <label style="background-image: 
+                                        linear-gradient(90deg, #999 4px, white 4px),
+                                        linear-gradient(90deg, white 4px, #999 4px),
+                                        linear-gradient(90deg, #999 4px, white 4px),
+                                    linear-gradient(90deg, white 4px, #999 4px);
+                                    background-position: 0 0, 0 4px, 0 8px, 0 12px;
+                                    background-repeat: repeat-x;
+                                    background-size: 8px 4px;" id="" for="productColorBrightTransparentRadio" class="w-2 h-2 rounded-full p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                    </div>
+                                </div>
+                                <div class="flex align-middle">
+                                    <input type="file" required name="productVariant[images][0]" id="productVariant[images][0]" multiple="true" accept="images/*" capture="environment">
                                 </div>
                             </div>
-                            <div class="flex align-middle">
-                                <input type="file" required name="productVariant[images][0]" id="productVariant[images][0]" multiple="true" accept="images/*" capture="environment">
-                            </div>
                         </div>
-                    </div>
-    
-                    <button type="submit" class="text-xl font-medium bg-rose-600 text-white p-4 rounded-lg">
-                        ADD PRODUCT
-                    </button>
-                </form>
+        
+                        <button type="submit" class="text-xl font-medium bg-rose-600 text-white p-4 rounded-lg">
+                            ADD PRODUCT
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </main>
 <script src="/admin/scripts/ejs.min.js" defer></script>
 <script src="/admin/scripts/addProductForm.js" defer></script>
 <script src="/admin/scripts/addProductVariant.js" defer></script>
 <script src="/admin/scripts/updateProductDescription.js" defer></script>
-<%- include("../partials/footer") %>
+<%- include("./partials/footer") %>
