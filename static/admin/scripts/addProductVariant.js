@@ -120,7 +120,7 @@ addVariantButton.addEventListener("click", (e) => {
     </div>
 </div>`, {numberOfVariants})}
     <div class="flex align-middle">
-    <input type="file" name="productVariant[images][${numberOfVariants-1}]" id="productVariant[images][${numberOfVariants-1}]" multiple="true" accept="images/*" capture="environment" required>
+    <input type="file" name="productVariant[images][${numberOfVariants-1}]" id="productVariant[images][${numberOfVariants-1}]" multiple="true" accept="images/*" capture="environment" class="file:border-rose-600 file:rounded-full file:bg-transparent file:text-rose-600 text-sm" required>
     </div>`;
     variantsContainer.appendChild(newVariantContainer);
 

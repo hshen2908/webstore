@@ -37,7 +37,6 @@ function getProducts(filter, includeHidden: boolean): Promise<any> {
     (filter.newArrival) && (modelFilter["newArrival"] = filter.newArrival);
     (filter.onSale) && (modelFilter["onSale"] = filter.onSale);
     includeHidden && (modelFilter["hidden"] = includeHidden);
-    console.log(modelFilter)
     return GlassesModel.find(modelFilter);
 }
 

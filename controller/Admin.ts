@@ -1,4 +1,4 @@
-import express, {NextFunction, Request, Response, Router} from "express";
+import express, {Handler, NextFunction, Request, Response, Router} from "express";
 import path from "path";
 import cloudinary from "cloudinary";
 import {GlassesModel} from "../model/Glasses";
@@ -12,6 +12,11 @@ const checkJwt = jwtAuth({
     audience: process.env.AUDIENCE,
     issuerBaseURL: process.env.APPLICATION_ISSUER_BASE_URL,
 });
+
+const defaultScopes = ["view:admin-dashboard"];
+const checkScopes = (scopes?: string | string[]): Handler => {
+    return requiredScopes((scopes ? defaultScopes.concat(scopes) : defaultScopes));
+}
 
 const adminRouter: Router = Router();
 
@@ -34,7 +39,6 @@ adminRouter.use(async (req: Request, res: Response, next: NextFunction) => {
     };
     try {
         const response = await axios.request(options);
-        console.log(response.data);
         req.headers.authorization = `${response.data.token_type} ${response.data.access_token}`
     } catch (err) {
         next(err);
@@ -42,7 +46,7 @@ adminRouter.use(async (req: Request, res: Response, next: NextFunction) => {
     next()
 });
 
-adminRouter.get("/", checkJwt, requiredScopes("view:admin-dashboard"),
+adminRouter.get("/", checkJwt, checkScopes(),
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             res.render("./admin/root", {title: "Admin Dashboard"});
@@ -51,19 +55,62 @@ adminRouter.get("/", checkJwt, requiredScopes("view:admin-dashboard"),
         }
     });
 
-adminRouter.get("/products", async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
     try {
-        res.render("./admin/products", {title: "Admin Products"});
+        res.render("./admin/dashboard", {title: "Activity", panelPath: "activity"});
     } catch (err) {
         next(err);
     }
 });
 
-adminRouter.post("/products", async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        res.render("./admin/dashboard", {title: "Manage Products", panelPath: "products"});
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.post("/products", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const newGlasses = await GlassesModel.create(req.body);
         await newGlasses.save();
         res.status(200).send("{}");
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.post("/api/upload-signature", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const uploadSignatureResponse = await getImageUploadSignature();
+
+        res.status(200).send(uploadSignatureResponse);
+        res.end();
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.get("/admins", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        res.render("./admin/dashboard", {title: "Manage Admins", panelPath: "admins"});
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.get("/users", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        res.render("./admin/dashboard", {title: "Manage Users", panelPath: "users"});
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.get("/settings", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        res.render("./admin/dashboard", {title: "Admin Settings", panelPath: "settings"});
     } catch (err) {
         next(err);
     }
@@ -82,16 +129,5 @@ async function getImageUploadSignature() {
     }, process.env.CLOUDINARY_SECRET);
     return {timestamp, apiKey, uploadUrl, uploadPreset, uploadFolder, signature};
 }
-
-adminRouter.post("/api/upload-signature", async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const uploadSignatureResponse = await getImageUploadSignature();
-
-        res.status(200).send(uploadSignatureResponse);
-        res.end();
-    } catch (err) {
-        next(err);
-    }
-});
 
 export {adminRouter};

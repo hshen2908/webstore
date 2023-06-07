@@ -1,11 +1,9 @@
 import {ErrorRequestHandler, Express, NextFunction, Request, RequestHandler, Response, Router} from "express";
 import * as http from "http";
-// import {HttpLogger} from "pino-http";
 import {ServerLogger} from "../logging/ServerLogger";
 
 const HttpTerminator = require("lil-http-terminator");
 const express = require("express");
-// const httpLogger: HttpLogger = require("pino-http")();
 const path = require("path");
 const defaultErrorHandler: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
     res.status(404).render("./root/pageNotFound", {title: "404 Not Found"});
@@ -25,16 +23,15 @@ export abstract class Server {
                 enableLogging: boolean = true, logPath: string = "./logs") {
         this.app = express();
         this.port = port;
-        enableLogging && (this.logger = new ServerLogger(this))
-        && this.app.use((req, res, next) => this.logger.logRequest(req, res, next))
-        && this.app.use((err, req, res, next) => this.logger.logRequestError(err, req, res, next))
-        // && this.app.use(httpLogger);
         this.app.set("views", path.join(__dirname, "..", "views"));
         this.viewEngine = viewEngine;
         this.app.set("view engine", viewEngine);
         this.app.set("view options", {filename: true});
         this.app.use(express.static(path.join(__dirname, "..", "static", "public")));
         this.initServer();
+        enableLogging && (this.logger = new ServerLogger(this))
+        && this.app.use((req: Request, res: Response, next: NextFunction) => this.logger.logRequest(req, res, next))
+        && this.app.use((err: any, req: Request, res: Response, next: NextFunction) => this.logger.logRequestError(err, req, res, next))
         this.app.use(defaultErrorHandler);
     }
 

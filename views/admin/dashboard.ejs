@@ -1,0 +1,24 @@
+<%- include("./partials/header") %>
+<main class="flex flex-grow flex-row items-center">
+    <div class="flex basis-2/12 self-stretch pt-4 border-r dark:border-r-gray-300 border-r-gray-700">
+        <nav>
+            <ul>
+                <li class="p-2 px-4 font-medium hover:text-rose-600 <%- url === "/admin/activity" ? "text-rose-600" : "" %>"><a href="/admin/activity">Activity</a></li>                
+                <li class="p-2 px-4 font-medium hover:text-rose-600 <%- url === "/admin/products" ? "text-rose-600" : "" %>"><a href="/admin/products">Products</a></li>
+                <li class="p-2 px-4 font-medium hover:text-rose-600 <%- url === "/admin/admins" ? "text-rose-600" : "" %>"><a href="/admin/admins">Admins</a></li>
+                <li class="p-2 px-4 font-medium hover:text-rose-600 <%- url === "/admin/users" ? "text-rose-600" : "" %>"><a href="/admin/users">Users</a></li>
+                <li class="p-2 px-4 font-medium hover:text-rose-600 <%- url === "/admin/settings" ? "text-rose-600" : "" %>"><a href="/admin/settings">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="basis-10/12 self-stretch">
+        <section class="max-w-none mx-auto py-4 px-16 flex-col justify-between overflow-y-auto overflow-x-hidden h-[93dvh]">
+            <%- include(`./partials/panels/${panelPath}`) %>
+        </section>
+    </div>
+</main>
+<script src="/admin/scripts/ejs.min.js" defer></script>
+<script src="/admin/scripts/addProductForm.js" defer></script>
+<script src="/admin/scripts/addProductVariant.js" defer></script>
+<script src="/admin/scripts/updateProductDescription.js" defer></script>
+<%- include("./partials/footer") %>

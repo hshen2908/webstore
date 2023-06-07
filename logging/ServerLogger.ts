@@ -25,6 +25,6 @@ export class ServerLogger extends Logger {
 
     logRequestError(err: any, req: Request, res: Response, next: NextFunction) {
         this.error(`${req.method} ${req.originalUrl} ${req.ip}`);
-        next();
+        next(err);
     }
 }

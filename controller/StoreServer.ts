@@ -20,9 +20,10 @@ export class StoreServer extends Server {
         // auth router attaches /login, /logout, and /callback routes to the baseURL
         this.app.use(auth(auth0Config));
         // req.isAuthenticated is provided from the auth router
-        this.app.use((req: Request, res: Response, next: NextFunction) => {
+        this.app.use(async (req: Request, res: Response, next: NextFunction) => {
             res.locals.isAuthenticated = req.oidc.isAuthenticated();
             res.locals.user = req.oidc.user;
+            res.locals.url = req.url;
             next();
         });
         this.app.get('/profile', requiresAuth(), (req, res) => {
