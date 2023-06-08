@@ -47,15 +47,14 @@ addProductForm.addEventListener("submit", async (e) => {
         console.dir(addProductForm)
         console.dir(newProductData);
         
-        // const productsRequest = getFilterData();
-        // productsRequest.startIndex = 0;
-        // productsRequest.responseType = "";
+        const productsRequest = getFilterData();
+        productsRequest.startIndex = 0;
+        productsRequest.responseType = "";
 
-        // const data = {newProductData, productsRequest};
-        const data = {newProductData};
+        const data = {newProductData, productsRequest};
 
         try {
-            const response = await fetch("/admin/products", {
+            const response = await fetch("/admin/product", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -63,8 +62,10 @@ addProductForm.addEventListener("submit", async (e) => {
                 },
                 body: JSON.stringify(data)
             });
-            const responseData = await response.json();
-            console.log(responseData);
+            const {html, responseProductCount, totalProductCount} = await response.json();
+            document.getElementById("productsContainer").innerHTML = html;
+            document.getElementById("productsContainer").attributes["data-product-count"].value = `${responseProductCount}`;
+            document.getElementById("productsContainer").attributes["data-total-product-count"].value = `${totalProductCount}`;
         } catch (e) {
             console.log(e);
         }

@@ -1,36 +1,36 @@
 function getFilterData() {
-    const categoriesCheckboxes = document.querySelectorAll(".productCategoriesCheckbox:checked");
+    const categoriesCheckboxes = document.querySelectorAll(".productFilterCategoriesCheckboxClass:checked");
     const categories = [];
     categoriesCheckboxes.forEach((categoriesCheckbox) => categories.push(categoriesCheckbox.value));
-    const materialsCheckboxes = document.querySelectorAll(".productMaterialsCheckbox:checked");
+    const materialsCheckboxes = document.querySelectorAll(".productFilterMaterialsCheckboxClass:checked");
     const materials = [];
     materialsCheckboxes.forEach((materialsCheckbox) => materials.push(materialsCheckbox.value));
-    const typesCheckboxes = document.querySelectorAll(".productTypesCheckbox:checked");
+    const typesCheckboxes = document.querySelectorAll(".productFilterTypesCheckboxClass:checked");
     const types = [];
     typesCheckboxes.forEach((typesCheckbox) => types.push(typesCheckbox.value));
-    const shapesCheckboxes = document.querySelectorAll(".productShapesCheckbox:checked");
+    const shapesCheckboxes = document.querySelectorAll(".productFilterShapesCheckboxClass:checked");
     const shapes = [];
     shapesCheckboxes.forEach((shapesCheckbox) => shapes.push(shapesCheckbox.value));
 
-    const colorsCheckboxes = document.querySelectorAll(".productColorsCheckbox:checked");
+    const colorsCheckboxes = document.querySelectorAll(".productFilterColorsCheckboxClass:checked");
     const colors = [];
     colorsCheckboxes.forEach((colorsCheckbox) => colors.push(colorsCheckbox.value));
 
-    const onSale = document.getElementById("productOnSale").checked;
-    const newArrival = document.getElementById("productNewArrival").checked;
+    const onSale = document.getElementById("productFilterOnSale").checked;
+    const newArrival = document.getElementById("productFilterNewArrival").checked;
 
     const dimensions = {
         eye: {
-            min: document.getElementById("productEyeMin").value || null,
-            max: document.getElementById("productEyeMax").value || null,
+            min: document.getElementById("productFilterEyeMin").value || null,
+            max: document.getElementById("productFilterEyeMax").value || null,
         },
         bridge: {
-            min: document.getElementById("productBridgeMin").value || null,
-            max: document.getElementById("productBridgeMax").value || null,
+            min: document.getElementById("productFilterBridgeMin").value || null,
+            max: document.getElementById("productFilterBridgeMax").value || null,
         },
         temple: {
-            min: document.getElementById("productTempleMin").value || null,
-            max: document.getElementById("productTempleMax").value || null,
+            min: document.getElementById("productFilterTempleMin").value || null,
+            max: document.getElementById("productFilterTempleMax").value || null,
         }
     }
 

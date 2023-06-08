@@ -1,7 +1,7 @@
 <h2 class="text-black dark:text-white text-4xl font-medium mb-4"><%- title %></h2>
 
 <div>
-    <!-- <%- include("./filterForm") %> -->
+    <%- include("./filterForm") %>
     <div class="flex flex-row flex-wrap lg:flex-nowrap mb-8 gap-2">
         <input type="search" name="productName" id="productNameSearch" placeholder="Search by Code" class="form-input rounded-md text-black bg-transparent focus:outline-none   focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white basis-full lg:basis-8/12">
         <select name="" id="" class="basis-6/12 lg:basis-3/12 form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white">
@@ -14,6 +14,7 @@
     <div class="flex flex-row flex-wrap lg:flex-nowrap gap-4">
         <div class="overflow-y-auto overflow-x-hidden max-h-[64vh] min-w-full">
             <%- include("./productsTable") %>
+            <%- include("../loadMoreButton") %>
         </div>
     </div>
 </div>
@@ -351,5 +352,8 @@
 <script src="/admin/scripts/getProducts.js" dedfer></script>
 <script src="/admin/scripts/addProductForm.js" defer></script>
 <script src="/admin/scripts/addProductVariant.js" defer></script>
+<script src="/admin/scripts/hideFilterSelect.js" defer></script>
 <script src="/admin/scripts/updateProductDescription.js" defer></script>
 <script src="/admin/scripts/chooseVariant.js" defer></script>
+<script src="/admin/scripts/loadMoreButton.js" defer></script>
+<script src="/admin/scripts/applyFilters.js" defer></script>

@@ -34,7 +34,7 @@ rootRouter.post("/products", async (req: Request, res: Response, next: NextFunct
     } catch (err) {
         next(err);
     }
-})
+});
 
 rootRouter.get("/contact", (req: Request, res: Response) => {
     res.render("./root/contact", {title: "Contact"});

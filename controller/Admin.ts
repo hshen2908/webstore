@@ -4,6 +4,7 @@ import cloudinary from "cloudinary";
 import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
 import {auth as jwtAuth, requiredScopes} from "express-oauth2-jwt-bearer";
+import {rootRouter} from "./Root";
 
 require("dotenv").config();
 const axios = require("axios").default;
@@ -66,7 +67,7 @@ adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: 
 adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const startIndex = 0;
-        const initialMaxProductCount = 64
+        const initialMaxProductCount = 64;
         const glasses = await getProducts({}, true);
         res.render("./admin/dashboard", {
             title: "Manage Products",
@@ -80,12 +81,47 @@ adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req
     }
 });
 
-adminRouter.post("/products", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.post("/products", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        if (req.body.newProductData) {
-            const newGlasses = await GlassesModel.create(req.body.newProductData);
+        const filter = req.body;
+        const startIndex = filter.startIndex;
+        const initialMaxProductCount = 64;
+        const glasses = await getProducts(filter, false);
+        res.render("./admin/partials/panels/productsTableListings", {glasses, startIndex, initialMaxProductCount},
+            (err: Error, html: string) => {
+                if (err) return next(err);
+                res.status(200).send(JSON.stringify({
+                    html,
+                    totalProductCount: glasses.length,
+                    responseProductCount: (glasses.length - startIndex < initialMaxProductCount ? glasses.length - startIndex : initialMaxProductCount)
+                }));
+            });
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+
+        console.log(req.body)
+        if (req.body.newProductData && req.body.productsRequest) {
+            const newProductData = req.body.newProductData;
+            const productsRequest = req.body.productsRequest;
+            const newGlasses = await GlassesModel.create(newProductData);
             await newGlasses.save();
-            res.status(200).send("{}");
+            const startIndex = productsRequest.startIndex;
+            const initialMaxProductCount = 64;
+            const glasses = await getProducts({}, true);
+            res.render("./admin/partials/panels/productsTableListings", {glasses, startIndex, initialMaxProductCount},
+                (err: Error, html: string) => {
+                    if (err) return next(err);
+                    res.status(200).send(JSON.stringify({
+                        html,
+                        totalProductCount: glasses.length,
+                        responseProductCount: (glasses.length - startIndex < initialMaxProductCount ? glasses.length - startIndex : initialMaxProductCount)
+                    }));
+                });
         } else {
             next(new Error());
         }

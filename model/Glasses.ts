@@ -118,7 +118,7 @@ const GlassesModel = ProductModel.discriminator("Glasses", glassesSchema);
 
 export {IGlasses, GlassesModel};
 
-function getProducts(filter, includeHidden: boolean): Promise<any> {
+function getProducts(filter, includeHidden: boolean, recentFirst: boolean = true): Promise<any> {
     const modelFilter = {};
     const $and = [{}, {}, {}, {}, {}];
     (filter?.categories?.length) && (filter.categories.length !== 0) && ($and[0]["$or"] = filter.categories.map((category) => {
@@ -154,6 +154,9 @@ function getProducts(filter, includeHidden: boolean): Promise<any> {
     (filter.newArrival) && (modelFilter["newArrival"] = filter.newArrival);
     (filter.onSale) && (modelFilter["onSale"] = filter.onSale);
     !includeHidden && (modelFilter["hidden"] = includeHidden);
+    if (recentFirst) {
+        return GlassesModel.find(modelFilter).sort({updatedAt: "-1"});
+    }
     return GlassesModel.find(modelFilter);
 }
 

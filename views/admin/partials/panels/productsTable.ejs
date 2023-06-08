@@ -1,4 +1,4 @@
-<table class="min-w-full m-0" id="productsContainer" data-product-count="<%- (glasses.length < initialMaxProductCount ? glasses.length : initialMaxProductCount) %>" data-total-product-count="<%- glasses.length %>">
+<table class="min-w-full m-0">
     <colgroup>
         <col class="w-[10%]">
         <col class="w-[10%]">
@@ -27,76 +27,7 @@
             <th class="text-left pb-4">Sizes</th>
         </tr>
     </thead>
-    <tbody>
-        <% for(let glassesIndex = startIndex; glassesIndex < glasses.length && glassesIndex < initialMaxProductCount; glassesIndex++) { %>
-            <% let g = glasses[glassesIndex]; %>
-            <tr class="min-w-full group ease-in duration-75 border-b dark:border-b-gray-300 border-b-gray-700 dark:hover:bg-zinc-800 hover:bg-zinc-200">
-                <td class="pr-2 py-2">
-                    <div class="dark:bg-zinc-900 relative rounded-lg shadow-lg flex justify-center">
-                        <div id="[<%- glassesIndex %>]variantsInfoContainerSelector[images]" class="absolute flex justify-between gap-1 bottom-4">
-                            <% g.variants[0].images.forEach(image => { %>
-                                <a href="#<%- image.fileName.split("/")[1] %>" class="text-gray-700 opacity-50 active:opacity-100 focus:opacity-75">&#9679;</a>                             
-                            <% }) %>
-                        </div>
-                        <div id="[<%- glassesIndex %>]variantsInfoContainer[images]" class="rounded-lg min-w-full shadow-sm aspect-square object-cover overflow-hidden overflow-x-hidden snap-x snap-mandatory scroll-smooth flex gap-x-4">
-                            <% g.variants[0].images.forEach(image => { %>
-                                <img src="<%- image.url %>" class="rounded-lg min-w-full shadow-sm aspect-square object-cover snap-center" id="<%- image.fileName.split("/")[1] %>"></img>
-                            <% }) %>
-                        </div>
-                    </div>
-                </td>         
-                
-                <td id="[<%- glassesIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- g.name %></td>
-                <td id="[<%- glassesIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- g.code %></td>
-                <td id="[<%- glassesIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- g.quantity %></td>
-                <td id="[<%- glassesIndex %>]productPriceInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium before:content-['R$\00a0']"><%- g.price %></td>
-                <td id="[<%- glassesIndex %>]productTypeInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium capitalize"><%- g.type %></td>
-                        
-                <td class="pr-1 py-2">
-                    <div class="flex flex-wrap gap-1" id="[<%- glassesIndex %>]variantsInfoContainer[color]">
-                        <% g.variants.forEach((variant, index) => { %>
-                            <div class="flex" id="[<%- glassesIndex %>]productVariantInfo[<%- index %>]">
-                                <input class="peer form-radio rounded-md absolute hidden" type="radio" name="[<%- glassesIndex %>]productVariantInfo"  id="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" value="<%- index %>" data-images='<%- JSON.stringify(variant.images) %>' <%- index === 0 ? "checked" : "" %>>
-                                <label style="background-color: <%- variant.color; %>"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
-                            </div>
-                        <% }) %>
-                    </div>
-                </td>
-                
-                <td class="pr-1 py-2">
-                    <div class="flex flex-wrap gap-[0.25rem] text-[0.5rem]">
-                        <span id="[<%- glassesIndex %>]productNewArrivalInfo" class="px-[1.25em] py-[0.5em] text-[1em] border-2 border-rose-400 text-rose-400 font-medium rounded-full <%- g.newArrival ? "" : "hidden" %>">NEW ARRIVAL</span>
-                        <span id="[<%- glassesIndex %>]productOnSaleInfo" class="px-[1.25em] py-[0.5em] text-[1em] border-2 border-yellow-400 text-yellow-400 font-medium rounded-full <%- g.onSale ? "" : "hidden" %>">ON SALE</span>                    
-                        <span id="[<%- glassesIndex %>]productHiddenInfo" class="px-[1.25em] py-[0.5em] text-[1em] border-2 border-slate-400 text-slate-400 font-medium rounded-full <%- g.hidden ? "" : "hidden" %>">HIDDEN</span>    
-                    </div>
-                </td>
-
-                <td class="pr-1 py-2">
-                    <div class="flex flex-wrap gap-[0.25rem] text-[0.5rem]">
-                        <span id="[<%- glassesIndex %>]productUnissexInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-teal-400 text-teal-400 <%- g.categories.includes("unissex") ? "" : "hidden" %>">UNISSEX</span>
-                        <span id="[<%- glassesIndex %>]productMenInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 <%- g.categories.includes("men") ? "" : "hidden" %>">MEN</span>
-                        <span id="[<%- glassesIndex %>]productWomenInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-purple-400 text-purple-400 <%- g.categories.includes("women") ? "" : "hidden" %>">WOMEN</span>
-                        <span id="[<%- glassesIndex %>]productKidsInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-orange-400 text-orange-400 <%- g.categories.includes("kids") ? "" : "hidden" %>">KIDS</span>
-                    </div>
-                </td>
-                
-                <td class="pr-1 py-2">
-                    <div class="flex flex-wrap gap-[0.25rem] text-[0.5rem]">
-                        <span id="[<%- glassesIndex %>]productAcetateInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-red-400 text-red-400 <%- g.materials.includes("acetate") ? "" : "hidden" %>">Acetate</span>
-                        <span id="[<%- glassesIndex %>]productStainlessSteelInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-green-400 text-green-400 <%- g.materials.includes("stainless steel") ? "" : "hidden" %>">Stainless Steel</span>
-                        <span id="[<%- glassesIndex %>]productTitaniumInfo" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-blue-400 text-blue-400 <%- g.materials.includes("titanium") ? "" : "hidden" %>">Titanium</span>
-                        <span id="[<%- glassesIndex %>]productTr90Info" class="px-[1.25em] py-[0.5em] text-[1em] font-medium rounded-full border-2 border-pink-400 text-pink-400 <%- g.materials.includes("tr90") ? "" : "hidden" %>">Tr90</span>
-                    </div>
-                </td>
-
-                <td class="pr-1 py-2">
-                    <div class="">
-                        <h3 id="[<%- glassesIndex %>]productEyeInfo" class="before:content-['eye:\00a0'] after:content-['\00a0mm'] font-normal"><%- g.dimensions.eye %></h3>
-                        <h3 id="[<%- glassesIndex %>]productBridgeInfo" class="before:content-['bridge:\00a0'] after:content-['\00a0mm'] font-normal"><%- g.dimensions.bridge %></h3>
-                        <h3 id="[<%- glassesIndex %>]productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] font-normal"><%- g.dimensions.temple %></h3>
-                    </div>  
-                </td>
-            </tr>
-        <% } %>
+    <tbody id="productsContainer" data-product-count="<%- (glasses.length < initialMaxProductCount ? glasses.length : initialMaxProductCount) %>" data-total-product-count="<%- glasses.length %>">
+        <%- include("./productsTableListings") %>
     </tbody>
 </table>
