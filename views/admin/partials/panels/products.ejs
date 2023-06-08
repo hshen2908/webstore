@@ -1,12 +1,19 @@
 <h2 class="text-black dark:text-white text-4xl font-medium mb-4"><%- title %></h2>
 
 <div>
-    <h2 class="text-black dark:text-white text-2xl font-medium py-4">
-        All Products
-    </h2>
-    <div class="flex flex-row flex-wrap lg:flex-nowrap gap-4 border border-gray-700 p-4 rounded-lg dark:border-gray-300">
-        <div class="overflow-y-auto overflow-x-hidden rounded-lg shadow-sm">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam debitis ad expedita unde voluptatum doloribus pariatur, sunt, aliquam placeat perferendis fuga laudantium velit sed esse in nam exercitationem rem totam?
+    <!-- <%- include("./filterForm") %> -->
+    <div class="flex flex-row flex-wrap lg:flex-nowrap mb-8 gap-2">
+        <input type="search" name="productName" id="productNameSearch" placeholder="Search by Code" class="form-input rounded-md text-black bg-transparent focus:outline-none   focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white basis-full lg:basis-8/12">
+        <select name="" id="" class="basis-6/12 lg:basis-3/12 form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white">
+            <option value=""></option>
+        </select>
+        <button type="button" class="basis-6/12 lg:basis-1/12 rounded-md text-black bg-transparent border focus:outline-none focus:border-rose-600 focus:ring-rose-600 border-gray-700 dark:border-gray-300 dark:text-white">
+            Reset
+        </button>
+    </div>
+    <div class="flex flex-row flex-wrap lg:flex-nowrap gap-4">
+        <div class="overflow-y-auto overflow-x-hidden max-h-[64vh] min-w-full">
+            <%- include("./productsTable") %>
         </div>
     </div>
 </div>
@@ -341,6 +348,8 @@
 </div>
 
 <script src="/admin/scripts/ejs.min.js" defer></script>
+<script src="/admin/scripts/getProducts.js" dedfer></script>
 <script src="/admin/scripts/addProductForm.js" defer></script>
 <script src="/admin/scripts/addProductVariant.js" defer></script>
 <script src="/admin/scripts/updateProductDescription.js" defer></script>
+<script src="/admin/scripts/chooseVariant.js" defer></script>

@@ -3,15 +3,15 @@ const addProductForm = document.getElementById("addProductForm");
 addProductForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (isValidForm(addProductForm)) {
-        const data = {};
-        data["code"] = addProductForm.productCode.value;
-        data["name"] = addProductForm.productName.value;
-        data["price"] = addProductForm.productPrice.value;
-        data["quantity"] = addProductForm.productQuantity.value;
-        data["hidden"] = addProductForm.productHidden.checked;
-        data["onSale"] = addProductForm.productOnSale.checked;
-        data["newArrival"] = addProductForm.productNewArrival.checked
-        data["dimensions"] = {
+        const newProductData = {};
+        newProductData["code"] = addProductForm.productCode.value;
+        newProductData["name"] = addProductForm.productName.value;
+        newProductData["price"] = addProductForm.productPrice.value;
+        newProductData["quantity"] = addProductForm.productQuantity.value;
+        newProductData["hidden"] = addProductForm.productHidden.checked;
+        newProductData["onSale"] = addProductForm.productOnSale.checked;
+        newProductData["newArrival"] = addProductForm.productNewArrival.checked
+        newProductData["dimensions"] = {
             bridge: addProductForm.productBridge.value,
             eye: addProductForm.productEye.value,
             temple: addProductForm.productTemple.value
@@ -23,7 +23,7 @@ addProductForm.addEventListener("submit", async (e) => {
             }
         }
         console.dir(categories)
-        data["categories"] = categories;
+        newProductData["categories"] = categories;
 
         const materials = [];
         for (let material of ["acetate", "stainlessSteel", "titanium", "tr90"]) {
@@ -31,10 +31,10 @@ addProductForm.addEventListener("submit", async (e) => {
                 materials.push(material === "stainlessSteel" ? "stainless steel" : material);
             }
         }
-        data["materials"] = materials;
+        newProductData["materials"] = materials;
 
-        data["shape"] = addProductForm.productShape.value;
-        data["type"] =  addProductForm.productType.value;
+        newProductData["shape"] = addProductForm.productShape.value;
+        newProductData["type"] =  addProductForm.productType.value;
 
         const variants = [];
         for (let i = 0; i < numberOfVariants; i++) {
@@ -43,9 +43,16 @@ addProductForm.addEventListener("submit", async (e) => {
                 images: productVariant.imagesData[i]
             });
         }
-        data["variants"] = variants;
+        newProductData["variants"] = variants;
         console.dir(addProductForm)
-        console.dir(data);
+        console.dir(newProductData);
+        
+        // const productsRequest = getFilterData();
+        // productsRequest.startIndex = 0;
+        // productsRequest.responseType = "";
+
+        // const data = {newProductData, productsRequest};
+        const data = {newProductData};
 
         try {
             const response = await fetch("/admin/products", {

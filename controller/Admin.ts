@@ -1,7 +1,7 @@
 import express, {Handler, NextFunction, Request, Response, Router} from "express";
 import path from "path";
 import cloudinary from "cloudinary";
-import {GlassesModel} from "../model/Glasses";
+import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
 import {auth as jwtAuth, requiredScopes} from "express-oauth2-jwt-bearer";
 
@@ -65,7 +65,16 @@ adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: 
 
 adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
-        res.render("./admin/dashboard", {title: "Manage Products", panelPath: "products"});
+        const startIndex = 0;
+        const initialMaxProductCount = 64
+        const glasses = await getProducts({}, true);
+        res.render("./admin/dashboard", {
+            title: "Manage Products",
+            panelPath: "products",
+            glasses,
+            startIndex,
+            initialMaxProductCount
+        });
     } catch (err) {
         next(err);
     }
@@ -73,9 +82,13 @@ adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req
 
 adminRouter.post("/products", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const newGlasses = await GlassesModel.create(req.body);
-        await newGlasses.save();
-        res.status(200).send("{}");
+        if (req.body.newProductData) {
+            const newGlasses = await GlassesModel.create(req.body.newProductData);
+            await newGlasses.save();
+            res.status(200).send("{}");
+        } else {
+            next(new Error());
+        }
     } catch (err) {
         next(err);
     }
