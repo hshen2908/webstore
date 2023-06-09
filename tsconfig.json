@@ -1,7 +1,5 @@
 {
   "ts-node": {
-    "cwd": "/mnt/d/Projects/webstore",
-    "projectSearchDir": "/mnt/d/Projects/webstore",
     "swc": true,
     "transpileOnly": true
   },
