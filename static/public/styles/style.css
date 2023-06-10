@@ -801,6 +801,10 @@ select {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.my-\[auto\] {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -846,6 +850,9 @@ select {
 .h-\[93dvh\] {
   height: 93dvh;
 }
+.h-full {
+  height: 100%;
+}
 .max-h-\[64vh\] {
   max-height: 64vh;
 }
@@ -867,6 +874,9 @@ select {
 .w-32 {
   width: 8rem;
 }
+.w-48 {
+  width: 12rem;
+}
 .w-\[10\%\] {
   width: 10%;
 }
@@ -875,6 +885,9 @@ select {
 }
 .w-\[40cqw\] {
   width: 40cqw;
+}
+.w-\[50\%\] {
+  width: 50%;
 }
 .w-auto {
   width: auto;
@@ -13357,6 +13370,9 @@ select {
 .py-\[2cqw\] {
   padding-top: 2cqw;
   padding-bottom: 2cqw;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 .pb-4 {
   padding-bottom: 1rem;

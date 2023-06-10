@@ -12,7 +12,8 @@ loadMoreButton.addEventListener("click", async (e) => {
     productsContainer.innerHTML = productsContainer.innerHTML + html;
     productsContainer.attributes["data-product-count"].value = `${currProductCount + responseProductCount}`;
     productsContainer.attributes["data-total-product-count"].value = `${totalProductCount}`;
-
+    loadMoreText.classList.remove("hidden");
+    loadMoreSpinner.classList.add("hidden");
     const loadMoreContainer = document.getElementById("loadMoreContainer");
     if (responseProductCount + currProductCount === totalProductCount) {
         loadMoreContainer.classList.add("hidden");

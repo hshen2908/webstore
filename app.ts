@@ -8,7 +8,7 @@ require("./model/Glasses");
 
 require("dotenv").config();
 
-let serverPort: number = process.env.PORT;
+let serverPort: number = Number.parseInt(process.env.PORT);
 
 export class App {
     private server: Server;

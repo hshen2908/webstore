@@ -1,7 +1,12 @@
 const addProductForm = document.getElementById("addProductForm");
+const submitNewProductText = document.getElementById("submitNewProductText");
+const submitNewProductSpinner = document.getElementById("submitNewProductSpinner");
+
 
 addProductForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    submitNewProductText.classList.add("hidden");
+    submitNewProductSpinner.classList.remove("hidden");
     if (isValidForm(addProductForm)) {
         const newProductData = {};
         newProductData["code"] = addProductForm.productCode.value;
@@ -72,6 +77,8 @@ addProductForm.addEventListener("submit", async (e) => {
     } else {
         console.log("FORM SUBMISSION INVALID ERROR")
     }
+    submitNewProductText.classList.remove("hidden");
+    submitNewProductSpinner.classList.add("hidden");
 });
 
 function isValidForm(formElement) {

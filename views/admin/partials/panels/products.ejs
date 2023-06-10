@@ -1,7 +1,7 @@
 <h2 class="text-black dark:text-white text-4xl font-medium mb-4"><%- title %></h2>
 
 <div>
-    <%- include("./filterForm") %>
+    <%- include("../filterForm") %>
     <div class="flex flex-row flex-wrap lg:flex-nowrap mb-8 gap-2">
         <input type="search" name="productName" id="productNameSearch" placeholder="Search by Code" class="form-input rounded-md text-black bg-transparent focus:outline-none   focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white basis-full lg:basis-8/12">
         <select name="" id="" class="basis-6/12 lg:basis-3/12 form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white">
@@ -13,7 +13,7 @@
     </div>
     <div class="flex flex-row flex-wrap lg:flex-nowrap gap-4">
         <div class="overflow-y-auto overflow-x-hidden max-h-[64vh] min-w-full">
-            <%- include("./productsTable") %>
+            <%- include("../productsTable") %>
             <%- include("../loadMoreButton") %>
         </div>
     </div>
@@ -94,29 +94,29 @@
             </div>
         </div>
         <div class="lg:w-1/2 aspect-[3/2] overflow-y-auto overflow-x-hidden rounded-lg shadow-sm">
-            <form action="/admin/products" id="addProductForm" method="post" class="flex flex-wrap gap-4 p-4">
-                <div>
+            <form action="/admin/products" id="addProductForm" method="post" class="flex flex-row flex-wrap p-4">
+                <div class="w-[50%] pb-4">
                     <label for="productCode">Code: </label>
                     <input required type="text" name="productCode" id="productCode" class="form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white">
                 </div>
     
-                <div>
+                <div class="w-[50%] pb-4">
                     <label for="productName">Name: </label>
                     <input required type="text" name="productName" id="productName" class="form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white">
                 </div>
                 
-                <div>
+                <div class="w-[50%] pb-4">
                     <label for="productPrice">Price: </label>
                     <input required type="number" name="productPrice" id="productPrice" class="form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white" min="0">
                 </div>
     
-                <div>
+                <div class="w-[50%] pb-4">
                     <label for="productQuantity">Quantity: </label>
                     <input required type="number" name="productQuantity" id="productQuantity" class="form-input rounded-md text-black bg-transparent focus:outline-none focus:border-rose-600 focus:ring-rose-600 border border-gray-700 dark:border-gray-300 dark:text-white" min="0">
                 </div>
     
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Modifiers</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Modifiers</h3>
                     <div class="flex flex-wrap gap-2">
                         <div class="flex">
                             <input type="checkbox" name="productNewArrival" id="productNewArrival" class="peer form-checkbox rounded-md hidden">
@@ -135,8 +135,8 @@
                     </div>
                 </div>
     
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Dimensions</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Dimensions</h3>
                     <div class="flex flex-wrap gap-2">
                         <div>
                             <label for="productEye">Eye: </label>
@@ -153,8 +153,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Categories</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Categories</h3>
                     <div class="flex flex-wrap gap-2 my-2">
                         <div class="">
                             <div>
@@ -183,8 +183,8 @@
                     </div>
                 </div>
     
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Materials</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Materials</h3>
                     <div class="flex flex-wrap gap-2 my-2">
                         <div class="">
                             <div>
@@ -213,8 +213,8 @@
                     </div>
                 </div>
     
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Shape</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Shape</h3>
                     <div class="flex flex-wrap gap-2 relative">
                         <div class="flex">
                             <input required type="radio" name="productShape" id="round" value="round" class="peer form-radio rounded-md absolute">
@@ -263,8 +263,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-black dark:text-white font-medium">Type</h3>
+                <div class="pb-4">
+                    <h3 class="pb-2 text-black dark:text-white font-medium">Type</h3>
                     <div class="flex flex-wrap gap-2 relative">
                         <div class="flex">
                             <input required type="radio" name="productType" id="productEyeglasses" value="eyeglasses" class="peer form-radio rounded-md absolute">
@@ -283,7 +283,7 @@
                     </div>
                 </div>
     
-                <div class="flex flex-wrap gap-2" id="variantsContainer">
+                <div class="pb-4 flex flex-wrap gap-2" id="variantsContainer">
                     <div class="min-w-full flex justify-between items-center">
                         <h3 class="text-black dark:text-white font-medium">Variants</h3>
                         <button type="button" class="text-2xl font-medium dark:text-white hover:text-rose-600" id="addProductVariantButton">+</button>
@@ -340,8 +340,13 @@
                     </div>
                 </div>
     
-                <button type="submit" class="text-xl font-medium bg-rose-600 text-white p-4 rounded-lg">
-                    ADD PRODUCT
+                <button type="submit" class="w-48 mx-auto p-4 text-xl font-medium bg-rose-600 text-white rounded-full active:scale-105 hover:saturate-150 transition-all flex justify-center">
+                    <h2 id="submitNewProductText" class="font-medium text-white m-2">
+                        ADD PRODUCT
+                    </h2>
+                    <svg id="submitNewProductSpinner" class="animate-spin hidden" width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="white" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path fill="white" d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"/>
+                    </svg>
                 </button>
             </form>
         </div>

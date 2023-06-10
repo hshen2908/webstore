@@ -87,7 +87,7 @@ adminRouter.post("/products", async (req: Request, res: Response, next: NextFunc
         const startIndex = filter.startIndex;
         const initialMaxProductCount = 64;
         const glasses = await getProducts(filter, false);
-        res.render("./admin/partials/panels/productsTableListings", {glasses, startIndex, initialMaxProductCount},
+        res.render("./admin/partials/productsTableListings", {glasses, startIndex, initialMaxProductCount},
             (err: Error, html: string) => {
                 if (err) return next(err);
                 res.status(200).send(JSON.stringify({
@@ -103,8 +103,6 @@ adminRouter.post("/products", async (req: Request, res: Response, next: NextFunc
 
 adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
-
-        console.log(req.body)
         if (req.body.newProductData && req.body.productsRequest) {
             const newProductData = req.body.newProductData;
             const productsRequest = req.body.productsRequest;
@@ -113,7 +111,7 @@ adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (
             const startIndex = productsRequest.startIndex;
             const initialMaxProductCount = 64;
             const glasses = await getProducts({}, true);
-            res.render("./admin/partials/panels/productsTableListings", {glasses, startIndex, initialMaxProductCount},
+            res.render("./admin/partials/productsTableListings", {glasses, startIndex, initialMaxProductCount},
                 (err: Error, html: string) => {
                     if (err) return next(err);
                     res.status(200).send(JSON.stringify({
