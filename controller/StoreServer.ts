@@ -10,7 +10,7 @@ const auth0Config = {
     authRequired: false,
     auth0Logout: true,
     secret: process.env.AUTH_SECRET,
-    baseURL: process.env.APPLICATION_BASE_URL,
+    baseURL: (process.env.NODE_ENV === "production" ? process.env.APPLICATION_BASE_URL_PROD : process.env.APPLICATION_BASE_URL),
     clientID: process.env.APPLICATION_CLIENT_ID,
     issuerBaseURL: process.env.APPLICATION_ISSUER_BASE_URL,
 };
