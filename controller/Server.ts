@@ -36,7 +36,7 @@ export abstract class Server {
     }
 
     start(onListen?: () => void, onError?: (err: Error) => void): void {
-        this.httpServer = this.app.listen(this.port, "127.0.0.1", () => {
+        this.httpServer = this.app.listen(this.port, "0.0.0.0", () => {
             this.logger.logServerStart();
             onListen && onListen();
         }).on("error", (err: Error) => {
