@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  webstore_node:
+    build:
+      context: ./app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./app/.env
+    environment:
+      USE_PROXY: "true"
+  nginx:
+    restart: always
+    build:
+      context: "./nginx"
+    ports:
+      - "80:80"

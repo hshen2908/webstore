@@ -23,6 +23,7 @@ export abstract class Server {
                 enableLogging: boolean = true, logPath: string = "./logs") {
         this.app = express();
         this.port = port;
+        process.env.USE_PROXY && this.app.set("trust proxy", "loopback");
         this.app.set("views", path.join(__dirname, "..", "views"));
         this.viewEngine = viewEngine;
         this.app.set("view engine", viewEngine);
