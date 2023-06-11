@@ -17,4 +17,4 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /etc/letsencrypt/live/hreyewear.com:/etc/nginx/certs/hreyewear.com
+      - /data/certs/hreyewear.com:/etc/nginx/certs/hreyewear.com
