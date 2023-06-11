@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "public/styles/style.css"
+  ],
+  "execMap": {
+    "ejs": "npm run tailwind:css"
+  }
+}
