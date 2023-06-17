@@ -3,11 +3,36 @@
     <div class="flex basis-2/12 self-stretch pt-4 border-r dark:border-r-gray-300 border-r-gray-700">
         <nav>
             <ul>
-                <li class="p-2 px-8 font-medium hover:text-rose-600 <%- url === "/admin/activity" ? "text-rose-600" : "" %>"><a href="/admin/activity">Activity</a></li>                
-                <li class="p-2 px-8 font-medium hover:text-rose-600 <%- url === "/admin/products" ? "text-rose-600" : "" %>"><a href="/admin/products">Products</a></li>
-                <li class="p-2 px-8 font-medium hover:text-rose-600 <%- url === "/admin/admins" ? "text-rose-600" : "" %>"><a href="/admin/admins">Admins</a></li>
-                <li class="p-2 px-8 font-medium hover:text-rose-600 <%- url === "/admin/users" ? "text-rose-600" : "" %>"><a href="/admin/users">Users</a></li>
-                <li class="p-2 px-8 font-medium hover:text-rose-600 <%- url === "/admin/settings" ? "text-rose-600" : "" %>"><a href="/admin/settings">Settings</a></li>
+                <li class="p-2 px-8 font-bold hover:text-rose-600 <%- url === "/admin/activity" ? "text-rose-600" : "" %>">
+                    <a href="/admin/activity" class="flex items-center gap-2">
+                        <svg width="20" height="20" viewBox="0 -5.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>activity [#985]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-260.000000, -3845.000000)" fill="currentColor"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M216.512,3685 L210.796,3690.79 L208.051,3688.155 L208.044,3688.162 L208.038,3688.156 L204,3692.386 L205.453,3693.8 L208.115,3691.033 L210.859,3693.653 L216.512,3687.885 L219.252,3690.66 C219.545,3690.028 220.046,3689.514 220.666,3689.208 L216.512,3685 Z M224,3691.96 C224,3693.087 223.098,3694 221.986,3694 C220.874,3694 219.973,3693.087 219.973,3691.96 C219.973,3690.833 220.874,3689.92 221.986,3689.92 C223.098,3689.92 224,3690.833 224,3691.96 L224,3691.96 Z" id="activity-[#985]"> </path> </g> </g> </g> </g></svg>
+                        <span>Activity</span>
+                    </a>
+                </li>                
+                <li class="p-2 px-8 font-bold hover:text-rose-600 <%- url === "/admin/products" ? "text-rose-600" : "" %>">
+                    <a href="/admin/products" class="flex items-center gap-2">
+                        <svg fill="#000000" height="20" width="20" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g fill="currentColor" id="SVGRepo_iconCarrier"> <g> <g> <path d="M94.833,264.344c-4.081-4.08-10.697-4.079-14.777,0.002l-3.307,3.308c-4.079,4.081-4.079,10.697,0.002,14.777 c2.041,2.04,4.714,3.06,7.387,3.06c2.675,0,5.35-1.021,7.39-3.062l3.307-3.308C98.914,275.039,98.914,268.424,94.833,264.344z"></path> </g> </g> <g> <g> <path d="M345.439,264.344c-4.081-4.08-10.697-4.079-14.777,0.002l-3.307,3.308c-4.079,4.081-4.079,10.697,0.002,14.777 c2.041,2.04,4.714,3.06,7.387,3.06c2.675,0,5.35-1.021,7.39-3.062l3.307-3.308C349.52,275.039,349.52,268.424,345.439,264.344z"></path> </g> </g> <g> <g> <path d="M501.551,237.942h-13.899c-8.618-50.901-53.013-89.791-106.329-89.791c-33.293,0-63.106,15.166-82.905,38.949 c-8.493-14.628-24.32-24.491-42.418-24.491c-18.098,0-33.925,9.864-42.418,24.491c-19.799-23.783-49.613-38.949-82.905-38.949 c-53.316,0-97.712,38.89-106.329,89.791H10.449C4.678,237.942,0,242.62,0,248.391c0,5.771,4.678,10.449,10.449,10.449h12.418 c1.511,58.161,49.292,105.009,107.812,105.009c59.468,0,107.849-48.381,107.849-107.849c0-16.651-3.795-32.433-10.563-46.526 c1.108-14.503,13.255-25.968,28.037-25.968c14.782,0,26.928,11.465,28.036,25.968c-6.767,14.094-10.563,29.875-10.563,46.526 c0,59.468,48.381,107.849,107.849,107.849c58.518,0,106.301-46.848,107.812-105.009h12.417c5.771,0,10.449-4.678,10.449-10.449 S507.322,237.942,501.551,237.942z M130.677,342.951c-8.073,0-15.884-1.13-23.305-3.198l69.867-69.866 c4.08-4.08,4.081-10.697,0.001-14.777c-4.081-4.08-10.697-4.08-14.777,0l-75.822,75.82C60.985,315.794,43.727,287.882,43.727,256 c0-47.945,39.006-86.951,86.951-86.951c13.062,0,25.451,2.913,36.578,8.096l-63.296,63.297c-4.08,4.08-4.08,10.697,0,14.777 c2.041,2.041,4.715,3.06,7.388,3.06s5.349-1.021,7.388-3.06l66.697-66.698c19.625,15.956,32.194,40.273,32.194,67.479 C217.628,303.945,178.622,342.951,130.677,342.951z M381.322,342.951c-8.041,0-15.821-1.12-23.217-3.172l69.893-69.892 c4.08-4.08,4.081-10.697,0-14.777c-4.081-4.08-10.697-4.08-14.777,0l-75.864,75.863c-25.695-15.126-42.987-43.06-42.987-74.971 c0-47.945,39.006-86.951,86.951-86.951c13.052,0,25.431,2.909,36.552,8.083l-63.307,63.308c-4.08,4.08-4.08,10.697,0,14.777 c2.041,2.041,4.715,3.06,7.388,3.06s5.349-1.021,7.388-3.06l66.714-66.715c19.638,15.956,32.216,40.281,32.216,67.497 C468.273,303.945,429.267,342.951,381.322,342.951z"></path> </g> </g> </g></svg>
+                        Products
+                    </a>
+                </li>
+                <li class="p-2 px-8 font-bold hover:text-rose-600 <%- url === "/admin/admins" ? "text-rose-600" : "" %>">
+                    <a href="/admin/admins" class="flex items-center gap-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g fill="currentColor" id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm9 6h1v5h-8v-5h1v-1a3 3 0 0 1 6 0v1zm-2 0v-1a1 1 0 0 0-2 0v1h2z"></path> </g> </g></svg>
+                        Admins
+                    </a>
+                </li>
+                <li class="p-2 px-8 font-bold hover:text-rose-600 <%- url === "/admin/users" ? "text-rose-600" : "" %>">
+                    <a href="/admin/users" class="flex items-center gap-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g fill="currentColor" id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M2 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H2zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm8.284 3.703A8.002 8.002 0 0 1 23 22h-2a6.001 6.001 0 0 0-3.537-5.473l.82-1.824zm-.688-11.29A5.5 5.5 0 0 1 21 8.5a5.499 5.499 0 0 1-5 5.478v-2.013a3.5 3.5 0 0 0 1.041-6.609l.555-1.943z"></path> </g> </g></svg>
+                        Users
+                    </a>
+                </li>
+                <li class="p-2 px-8 font-bold hover:text-rose-600 <%- url === "/admin/settings" ? "text-rose-600" : "" %>">
+                    <a href="/admin/settings" class="flex items-center gap-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g fill="currentColor" id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M12 1l9.5 5.5v11L12 23l-9.5-5.5v-11L12 1zm0 2.311L4.5 7.653v8.694l7.5 4.342 7.5-4.342V7.653L12 3.311zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path> </g> </g></svg>
+                        Settings
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

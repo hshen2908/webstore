@@ -777,6 +777,9 @@ select {
 .top-0 {
   top: 0px;
 }
+.top-\[100vh\] {
+  top: 100vh;
+}
 .z-10 {
   z-index: 10;
 }
@@ -797,19 +800,22 @@ select {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
+.my-16 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-.my-\[auto\] {
-  margin-top: auto;
-  margin-bottom: auto;
 }
 .mb-4 {
   margin-bottom: 1rem;
 }
 .mb-8 {
   margin-bottom: 2rem;
+}
+.ml-32 {
+  margin-left: 8rem;
 }
 .block {
   display: block;
@@ -850,14 +856,8 @@ select {
 .h-\[93dvh\] {
   height: 93dvh;
 }
-.h-full {
-  height: 100%;
-}
 .max-h-\[64vh\] {
   max-height: 64vh;
-}
-.min-h-full {
-  min-height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -935,6 +935,9 @@ select {
 .scale-150 {
   --tw-scale-x: 1.5;
   --tw-scale-y: 1.5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 @keyframes dropdownClose {
@@ -1043,6 +1046,9 @@ select {
 .overflow-ellipsis {
   text-overflow: ellipsis;
 }
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1061,6 +1067,10 @@ select {
 }
 .border-2 {
   border-width: 2px;
+}
+.border-y-\[1px\] {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -13229,6 +13239,18 @@ select {
 .bg-none {
   background-image: none;
 }
+.from-rose-600 {
+  --tw-gradient-from: #e11d48 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(225 29 72 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.via-rose-600 {
+  --tw-gradient-to: rgb(225 29 72 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #e11d48 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.to-zinc-900 {
+  --tw-gradient-to: #18181b var(--tw-gradient-to-position);
+}
 .bg-auto {
   background-size: auto;
 }
@@ -13327,6 +13349,9 @@ select {
 .p-6 {
   padding: 1.5rem;
 }
+.p-8 {
+  padding: 2rem;
+}
 .px-14 {
   padding-left: 3.5rem;
   padding-right: 3.5rem;
@@ -13421,6 +13446,10 @@ select {
 }
 .text-\[8cqw\] {
   font-size: 8cqw;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .text-sm {
   font-size: 0.875rem;
@@ -13566,6 +13595,13 @@ select {
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -13623,10 +13659,6 @@ select {
 .hover\:bg-zinc-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(228 228 231 / var(--tw-bg-opacity));
-}
-.hover\:text-red-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 .hover\:text-rose-600:hover {
   --tw-text-opacity: 1;
@@ -13699,6 +13731,16 @@ select {
   .dark\:bg-zinc-900 {
     --tw-bg-opacity: 1;
     background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+  }
+
+  .dark\:from-rose-600 {
+    --tw-gradient-from: #e11d48 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(225 29 72 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+
+  .dark\:to-zinc-900 {
+    --tw-gradient-to: #18181b var(--tw-gradient-to-position);
   }
 
   .dark\:text-white {

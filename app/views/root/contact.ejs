@@ -1,8 +1,40 @@
-<%- include("./partials/header") %>
-<main class="flex flex-grow justify-between">
-    CONTACT
-    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=Avenida%20Senador%20Queir%C3%B3s%20295%20-%20Centro%20Hist%C3%B3rico%20de%20S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%20-%20State%20of%20S%C3%A3o%20Paulo%2C%20Brazil&key=AIzaSyD9C4dXELq19uf62zZ0N_cpsOFenUnq2UY" class="min-h-full"></iframe>
-</main>
+<%- include("./partials/htmlStart") %>
+<div class="bg-gradient-to-bl dark:from-rose-600 bg-rose-600 text-white dark:to-zinc-900">
+    <%- include("./partials/header") %>
+    <main class="flex flex-grow">
+        <div class="p-6 flex-grow">
+            <h2 class="font-bold text-4xl my-16">Contact</h2>
+            <div class="flex flex-wrap justify-between w-auto">
+                <div>
+                    <span class="font-bold text-lg py-4 inline-block">HREyewear</span>
+                    <p class="font-normal text-lg">
+                        Avenida Senador Queirós, 295, Térreo 17<br>
+                        Santa Ifigênia<br>
+                        São Paulo - SP, 01026-001<br>
+                        Brazil
+                    </p>
+                </div>
+                <div>
+                    <span class="font-bold text-lg py-4 inline-block">Get in touch</span>
+                    <p class="font-normal text-lg">
+                        <a href="tel:+">+55 (11) 98765-4321</a><br>
+                        <a href="mailto:">email@domain.com</a><br>
+                    </p>
+                </div>
+                <div>
+                    <span class="font-bold text-lg py-4 inline-block">Follow Us</span>
+                    <p class="font-normal text-lg">
+                        Santa Ifigênia<br>
+                        São Paulo - SP, 01026-001<br>
+                        Brazil
+                    </p>
+                </div>
+            </div>
+        </div>
+        <iframe class="ml-32" width="500" height="800" style="border:0; filter: invert(90%) hue-rotate(180deg);" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=Avenida%20Senador%20Queir%C3%B3s%20295%20-%20Centro%20Hist%C3%B3rico%20de%20S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%20-%20State%20of%20S%C3%A3o%20Paulo%2C%20Brazil&key=AIzaSyD9C4dXELq19uf62zZ0N_cpsOFenUnq2UY"></iframe>
+    </main>
+    <%- include("./partials/footer") %>
+</div>
+
 <!-- <script src="/scripts/chooseVariant.js" defer></script> -->
-<%- include("./partials/footer") %>
-    
+<%- include("./partials/htmlEnd") %>
