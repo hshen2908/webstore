@@ -771,8 +771,14 @@ select {
 .-top-1 {
   top: -0.25rem;
 }
+.bottom-24 {
+  bottom: 6rem;
+}
 .bottom-4 {
   bottom: 1rem;
+}
+.right-4 {
+  right: 1rem;
 }
 .top-0 {
   top: 0px;
@@ -813,9 +819,6 @@ select {
 }
 .mb-8 {
   margin-bottom: 2rem;
-}
-.ml-32 {
-  margin-left: 8rem;
 }
 .block {
   display: block;
@@ -1012,11 +1015,17 @@ select {
 .gap-1 {
   gap: 0.25rem;
 }
+.gap-16 {
+  gap: 4rem;
+}
 .gap-2 {
   gap: 0.5rem;
 }
 .gap-4 {
   gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
 }
 .gap-\[0\.25rem\] {
   gap: 0.25rem;
@@ -13244,9 +13253,9 @@ select {
   --tw-gradient-to: rgb(225 29 72 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-.via-rose-600 {
-  --tw-gradient-to: rgb(225 29 72 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #e11d48 var(--tw-gradient-via-position), var(--tw-gradient-to);
+.via-zinc-900 {
+  --tw-gradient-to: rgb(24 24 27 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #18181b var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .to-zinc-900 {
   --tw-gradient-to: #18181b var(--tw-gradient-to-position);
@@ -13388,6 +13397,10 @@ select {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 .py-\[0\.5em\] {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -13404,6 +13417,9 @@ select {
 }
 .pr-1 {
   padding-right: 0.25rem;
+}
+.pr-12 {
+  padding-right: 3rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
@@ -13753,6 +13769,16 @@ select {
     background-color: rgb(39 39 42 / var(--tw-bg-opacity));
   }
 }
+@media (min-width: 640px) {
+
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+}
 @media (min-width: 768px) {
 
   .md\:grid-cols-2 {
@@ -13760,6 +13786,14 @@ select {
   }
 }
 @media (min-width: 1024px) {
+
+  .lg\:block {
+    display: block;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
 
   .lg\:w-1\/2 {
     width: 50%;
@@ -13781,8 +13815,16 @@ select {
     flex-basis: 66.666667%;
   }
 
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
   .lg\:flex-nowrap {
     flex-wrap: nowrap;
+  }
+
+  .lg\:gap-32 {
+    gap: 8rem;
   }
 }
 @media (min-width: 1280px) {
