@@ -15,6 +15,7 @@ loadMoreButton.addEventListener("click", async (e) => {
     loadMoreText.classList.remove("hidden");
     loadMoreSpinner.classList.add("hidden");
     const loadMoreContainer = document.getElementById("loadMoreContainer");
+    registerButtons();
     if (responseProductCount + currProductCount === totalProductCount) {
         loadMoreContainer.classList.add("hidden");
     } else {

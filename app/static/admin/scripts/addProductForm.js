@@ -71,6 +71,7 @@ addProductForm.addEventListener("submit", async (e) => {
             document.getElementById("productsContainer").innerHTML = html;
             document.getElementById("productsContainer").attributes["data-product-count"].value = `${responseProductCount}`;
             document.getElementById("productsContainer").attributes["data-total-product-count"].value = `${totalProductCount}`;
+            registerButtons();
         } catch (e) {
             console.log(e);
         }

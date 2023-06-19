@@ -110,7 +110,33 @@ adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (
             await newGlasses.save();
             const startIndex = productsRequest.startIndex;
             const initialMaxProductCount = 64;
-            const glasses = await getProducts({}, true);
+            const glasses = await getProducts(productsRequest, true);
+            res.render("./admin/partials/productsTableListings", {glasses, startIndex, initialMaxProductCount},
+                (err: Error, html: string) => {
+                    if (err) return next(err);
+                    res.status(200).send(JSON.stringify({
+                        html,
+                        totalProductCount: glasses.length,
+                        responseProductCount: (glasses.length - startIndex < initialMaxProductCount ? glasses.length - startIndex : initialMaxProductCount)
+                    }));
+                });
+        } else {
+            next(new Error());
+        }
+    } catch (err) {
+        next(err);
+    }
+});
+
+adminRouter.delete("/product", checkJwt, requiredScopes("delete:product"), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        if (req.body.productToDeleteId && req.body.productsRequest) {
+            const productToDeleteId = req.body.productToDeleteId;
+            await GlassesModel.deleteOne({"_id": productToDeleteId});
+            const productsRequest = req.body.productsRequest;
+            const startIndex = productsRequest.startIndex;
+            const initialMaxProductCount = 64;
+            const glasses = await getProducts(productsRequest, true);
             res.render("./admin/partials/productsTableListings", {glasses, startIndex, initialMaxProductCount},
                 (err: Error, html: string) => {
                     if (err) return next(err);

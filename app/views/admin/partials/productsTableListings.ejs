@@ -66,5 +66,11 @@
                 <h3 id="[<%- glassesIndex %>]productTempleInfo" class="before:content-['temple:\00a0'] after:content-['\00a0mm'] font-normal"><%- g.dimensions.temple %></h3>
             </div>  
         </td>
+
+        <td class="pr-1 py-2">
+            <div class="">
+                <button type="submit" id="<%- g._id %>" class="deleteProductButton text-sm text-medium font-medium p-2 rounded-md bg-rose-600" data-product-id="<%- g._id %>">Remove</button>
+            </div>  
+        </td>
     </tr>
 <% } %>
