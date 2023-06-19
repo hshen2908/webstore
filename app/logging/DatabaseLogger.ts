@@ -3,18 +3,20 @@ import {IDatabase} from "../model/IDatabase";
 
 export class DatabaseLogger extends Logger {
     private database: IDatabase;
+    private loggingEnabled: boolean;
 
-    constructor(database: IDatabase) {
+    constructor(database: IDatabase, enableLogging: boolean) {
         super();
         this.database = database;
+        this.loggingEnabled = enableLogging;
     }
 
     logDatabaseStart() {
-        this.info(`Database Connected Successfully`);
+        this.loggingEnabled && this.info(`Database Connected Successfully`);
     }
 
     logDatabaseStop() {
-        this.info("Database Disconnected Successfully");
+        this.loggingEnabled && this.info("Database Disconnected Successfully");
     }
 
 

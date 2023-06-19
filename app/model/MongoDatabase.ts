@@ -7,9 +7,9 @@ export class MongoDatabase implements IDatabase {
     readonly uri: string;
     protected logger: DatabaseLogger;
 
-    constructor(uri: string) {
+    constructor(uri: string, enableLogging: boolean) {
         this.uri = uri;
-        this.logger = new DatabaseLogger(this);
+        this.logger = new DatabaseLogger(this, enableLogging);
     }
 
     async connect(onOpen?: () => void, onError?: () => void): Promise<void> {

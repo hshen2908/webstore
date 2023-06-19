@@ -16,7 +16,7 @@ export class App {
 
     constructor(serverPort: number) {
         this.server = new StoreServer(serverPort, (process.env.LOGGING === "true"));
-        this.database = new MongoDatabase(process.env.MONGODBURI);
+        this.database = new MongoDatabase(process.env.MONGODBURI, (process.env.LOGGING === "true"));
     }
 
     async start(): Promise<void> {
