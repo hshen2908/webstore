@@ -17,10 +17,10 @@ export abstract class Server {
     protected logger: ServerLogger;
     private httpTerminator;
 
-    constructor(port: number, viewEngine: string = "ejs",
+    constructor(port: number, enableLogging: boolean, logPath: string = "./logs",
+                viewEngine: string = "ejs",
                 notFoundHandler: RequestHandler = defaultErrorHandler,
-                errorHandler?: ErrorRequestHandler,
-                enableLogging: boolean = true, logPath: string = "./logs") {
+                errorHandler?: ErrorRequestHandler) {
         this.app = express();
         this.port = port;
         process.env.USE_PROXY && this.app.set("trust proxy", "loopback");
