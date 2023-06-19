@@ -30,8 +30,8 @@ export abstract class Server {
         this.app.set("view options", {filename: true});
         this.app.use(express.static(path.join(__dirname, "..", "static", "public")));
         this.initServer();
-        enableLogging && (this.logger = new ServerLogger(this))
-        && this.app.use((req: Request, res: Response, next: NextFunction) => this.logger.logRequest(req, res, next))
+        this.logger = new ServerLogger(this, enableLogging);
+        enableLogging && this.app.use((req: Request, res: Response, next: NextFunction) => this.logger.logRequest(req, res, next))
         && this.app.use((err: any, req: Request, res: Response, next: NextFunction) => this.logger.logRequestError(err, req, res, next))
         this.app.use(defaultErrorHandler);
     }
