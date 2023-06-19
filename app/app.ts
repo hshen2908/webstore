@@ -15,7 +15,7 @@ export class App {
     private database: IDatabase;
 
     constructor(serverPort: number) {
-        this.server = new StoreServer(serverPort, process.env.LOGGING);
+        this.server = new StoreServer(serverPort, (process.env.LOGGING === "true"));
         this.database = new MongoDatabase(process.env.MONGODBURI);
     }
 
