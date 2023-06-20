@@ -13236,6 +13236,9 @@ select {
 .bg-opacity-95 {
   --tw-bg-opacity: 0.95;
 }
+.bg-\[linear-gradient\(to_left_bottom\2c rgba\(223\2c 70\2c 97\2c 0\.5\)\2c rgba\(24\2c 24\2c 27\2c 0\.5\)\)\2c url\(\'\/images\/bg_dark\.jpg\'\)\] {
+  background-image: linear-gradient(to left bottom,rgba(223,70,97,0.5),rgba(24,24,27,0.5)),url('/images/bg_dark.jpg');
+}
 .bg-\[linear-gradient\(to_left_bottom\2c rgba\(223\2c 70\2c 97\2c 0\.5\)\2c rgba\(24\2c 24\2c 27\2c 0\.5\)\)\2c url\(\'\/images\/bg_light\.jpg\'\)\] {
   background-image: linear-gradient(to left bottom,rgba(223,70,97,0.5),rgba(24,24,27,0.5)),url('/images/bg_light.jpg');
 }
@@ -13780,10 +13783,6 @@ select {
   .dark\:bg-zinc-900 {
     --tw-bg-opacity: 1;
     background-color: rgb(24 24 27 / var(--tw-bg-opacity));
-  }
-
-  .dark\:bg-\[linear-gradient\(to_left_bottom\2c rgba\(223\2c 70\2c 97\2c 0\.5\)\2c rgba\(24\2c 24\2c 27\2c 0\.5\)\)\2c url\(\'\/images\/bg_dark\.jpg\'\)\] {
-    background-image: linear-gradient(to left bottom,rgba(223,70,97,0.5),rgba(24,24,27,0.5)),url('/images/bg_dark.jpg');
   }
 
   .dark\:from-rose-600 {
