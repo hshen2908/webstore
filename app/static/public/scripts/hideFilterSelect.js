@@ -61,7 +61,6 @@ for (let dropdown of dropdowns) {
         if (!dropdown.selectShown) {
             dropdown.select.classList.remove("hidden");
             dropdown.select.classList.add("hidden");
-            
         }
     });
 }
