@@ -1,6 +1,7 @@
+import {AppMetadata, ManagementClient, ObjectWithId, Permission, User, UserMetadata} from "auth0";
+
 require("dotenv").config();
 const axios = require("axios").default;
-import {AppMetadata, ManagementClient, User, UserMetadata} from "auth0";
 
 // const getManagementAPIAccessTokenOptions = {
 //     method: 'POST',
@@ -37,5 +38,13 @@ export class Manager {
 
     public static getUsers(): Promise<User<AppMetadata, UserMetadata>[]> {
         return Manager.managementClient.getUsers();
+    }
+
+    public static async checkUserScopes(user: Record<string, any>, scopes: string[]): Promise<boolean> {
+        const roles = await Manager.managementClient.getUserPermissions(<ObjectWithId>{
+            id: user.sub
+        });
+        const rolesNames = roles.map((value: Permission, index: number, array: Permission[]) => value.permission_name);
+        return scopes.every((value: string, index: number, array: string[]) => rolesNames.includes(value));
     }
 }

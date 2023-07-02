@@ -3,20 +3,22 @@ import path from "path";
 import cloudinary from "cloudinary";
 import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
-import {auth as jwtAuth, requiredScopes} from "express-oauth2-jwt-bearer";
 import {Manager} from "../model/Manager";
+import {InsufficientScopeError} from "express-oauth2-jwt-bearer";
 
 require("dotenv").config();
-const axios = require("axios").default;
-
-const checkJwt = jwtAuth({
-    audience: process.env.AUDIENCE,
-    issuerBaseURL: process.env.APPLICATION_ISSUER_BASE_URL,
-});
 
 const defaultScopes = ["view:admin-dashboard"];
-const checkScopes = (scopes?: string | string[]): Handler => {
-    return requiredScopes((scopes ? defaultScopes.concat(scopes) : defaultScopes));
+const checkScopes = (addDefaultScopes: boolean, scopes?: string | string[]): Handler => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        const initialScopes = addDefaultScopes ? defaultScopes : [];
+        const scopesToCheck = (scopes ? initialScopes.concat(scopes) : initialScopes);
+        const authorized = await Manager.checkUserScopes(res.locals.user, scopesToCheck);
+        if (!authorized) {
+            return next(new InsufficientScopeError(scopesToCheck));
+        }
+        next();
+    }
 }
 
 const adminRouter: Router = Router();
@@ -26,28 +28,7 @@ adminRouter.use(express.json());
 
 adminRouter.use(requiresAuth());
 
-adminRouter.use(async (req: Request, res: Response, next: NextFunction) => {
-    const options = {
-        method: 'POST',
-        url: `${process.env.APPLICATION_ISSUER_BASE_URL}/oauth/token`,
-        headers: {'content-type': 'application/x-www-form-urlencoded'},
-        data: new URLSearchParams({
-            grant_type: 'client_credentials',
-            client_id: process.env.APPLICATION_CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
-            audience: process.env.AUDIENCE
-        })
-    };
-    try {
-        const response = await axios.request(options);
-        req.headers.authorization = `${response.data.token_type} ${response.data.access_token}`
-    } catch (err) {
-        next(err);
-    }
-    next()
-});
-
-adminRouter.get("/", checkJwt, checkScopes(),
+adminRouter.get("/", checkScopes(true),
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             res.redirect("/admin/activity");
@@ -57,7 +38,7 @@ adminRouter.get("/", checkJwt, checkScopes(),
         }
     });
 
-adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/activity", checkScopes(true), async (req: Request, res: Response, next: NextFunction) => {
     try {
         res.render("./admin/dashboard", {title: "Activity", panelPath: "activity"});
     } catch (err) {
@@ -65,7 +46,7 @@ adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: 
     }
 });
 
-adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/products", checkScopes(true, "create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const startIndex = 0;
         const initialMaxProductCount = 6//64;
@@ -102,7 +83,7 @@ adminRouter.post("/products", async (req: Request, res: Response, next: NextFunc
     }
 });
 
-adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.post("/product", checkScopes(false, "create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         if (req.body.newProductData && req.body.productsRequest) {
             const newProductData = req.body.newProductData;
@@ -129,7 +110,7 @@ adminRouter.post("/product", checkJwt, requiredScopes("create:product"), async (
     }
 });
 
-adminRouter.delete("/product", checkJwt, requiredScopes("delete:product"), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.delete("/product", checkScopes(false, "delete:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         if (req.body.productToDeleteId && req.body.productsRequest) {
             const productToDeleteId = req.body.productToDeleteId;
@@ -155,7 +136,7 @@ adminRouter.delete("/product", checkJwt, requiredScopes("delete:product"), async
     }
 });
 
-adminRouter.post("/api/upload-signature", checkJwt, requiredScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.post("/api/upload-signature", checkScopes(false, "create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const uploadSignatureResponse = await getImageUploadSignature();
 
@@ -166,7 +147,7 @@ adminRouter.post("/api/upload-signature", checkJwt, requiredScopes("create:produ
     }
 });
 
-adminRouter.get("/admins", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/admins", checkScopes(true), async (req: Request, res: Response, next: NextFunction) => {
     try {
         res.render("./admin/dashboard", {title: "Manage Admins", panelPath: "admins"});
     } catch (err) {
@@ -174,7 +155,7 @@ adminRouter.get("/admins", checkJwt, checkScopes(), async (req: Request, res: Re
     }
 });
 
-adminRouter.get("/users", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/users", checkScopes(true), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const startIndex = 0;
         const initialMaxUserCount = 6//64;
@@ -191,7 +172,7 @@ adminRouter.get("/users", checkJwt, checkScopes(), async (req: Request, res: Res
     }
 });
 
-adminRouter.get("/settings", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.get("/settings", checkScopes(true), async (req: Request, res: Response, next: NextFunction) => {
     try {
         res.render("./admin/dashboard", {title: "Admin Settings", panelPath: "settings"});
     } catch (err) {

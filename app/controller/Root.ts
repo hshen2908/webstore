@@ -1,5 +1,6 @@
 import express, {NextFunction, Request, Response, Router} from "express";
 import {getProducts} from "../model/Glasses";
+import {Manager} from "../model/Manager";
 
 const rootRouter: Router = Router();
 
@@ -10,7 +11,12 @@ rootRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
         const startIndex = 0;
         const initialMaxProductCount = 6//64;
         const glasses = await getProducts({}, false);
-        res.render("./root/root", {title: "Home", glasses, startIndex, initialMaxProductCount});
+        res.render("./root/root", {
+            title: "Home",
+            includeAdminDashboardLink: res.locals.user ? await Manager.checkUserScopes(res.locals.user, ["view:admin-dashboard"]) : false,
+            glasses, startIndex,
+            initialMaxProductCount
+        });
     } catch (err) {
         next(err);
     }
@@ -36,8 +42,11 @@ rootRouter.post("/products", async (req: Request, res: Response, next: NextFunct
     }
 });
 
-rootRouter.get("/contact", (req: Request, res: Response) => {
-    res.render("./root/contact", {title: "Contact"});
+rootRouter.get("/contact", async (req: Request, res: Response) => {
+    res.render("./root/contact", {
+        title: "Contact",
+        includeAdminDashboardLink: res.locals.user ? await Manager.checkUserScopes(res.locals.user, ["view:admin-dashboard"]) : false,
+    });
 });
 
 export {rootRouter};
