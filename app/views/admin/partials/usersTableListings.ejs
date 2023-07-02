@@ -1,0 +1,22 @@
+<% for(let usersIndex = startIndex; usersIndex < users.length && usersIndex < initialMaxUserCount; usersIndex++) { %>
+    <% let u = users[usersIndex]; %>
+    <tr class="min-w-full group ease-in duration-75 border-b dark:border-b-gray-300 border-b-gray-700 dark:hover:bg-zinc-800 hover:bg-zinc-200">
+        <td id="[<%- usersIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium">
+            <img src="<%- u.picture %>" class="rounded-lg min-w-full shadow-sm aspect-square object-cover snap-center"></img>
+        </td>
+        <td id="[<%- usersIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium break-words"><%- u.name %></td>
+        <td id="[<%- usersIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium break-words"><%- u.email %></td>
+        <td id="[<%- usersIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- u.email_verified %></td>
+        <td id="[<%- usersIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- u.created_at %></td>
+        <td id="[<%- usersIndex %>]productPriceInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- u.updated_at %></td>
+        <td id="[<%- usersIndex %>]productTypeInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- u.last_login %></td>
+        <td id="[<%- usersIndex %>]productTypeInfo" class="pr-2 py-2 overflow-ellipsis overflow-hidden font-medium"><%- u.logins_count %></td>
+
+
+        <td class="pr-1 py-2">
+            <div class="">
+                <button type="submit" id="<%- u.user_id %>" class="deleteProductButton text-sm text-medium font-medium p-2 rounded-md bg-rose-600" data-product-id="<%- u.user_id %>">Remove</button>
+            </div>  
+        </td>
+    </tr>
+<% } %>

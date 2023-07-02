@@ -4,7 +4,7 @@ import cloudinary from "cloudinary";
 import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
 import {auth as jwtAuth, requiredScopes} from "express-oauth2-jwt-bearer";
-import {rootRouter} from "./Root";
+import {Manager} from "../model/Manager";
 
 require("dotenv").config();
 const axios = require("axios").default;
@@ -50,7 +50,8 @@ adminRouter.use(async (req: Request, res: Response, next: NextFunction) => {
 adminRouter.get("/", checkJwt, checkScopes(),
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            res.render("./admin/root", {title: "Admin Dashboard"});
+            res.redirect("/admin/activity");
+            // res.render("./admin/root", {title: "Admin Dashboard"});
         } catch (err) {
             next(err);
         }
@@ -67,7 +68,7 @@ adminRouter.get("/activity", checkJwt, checkScopes(), async (req: Request, res: 
 adminRouter.get("/products", checkJwt, checkScopes("create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const startIndex = 0;
-        const initialMaxProductCount = 64;
+        const initialMaxProductCount = 6//64;
         const glasses = await getProducts({}, true);
         res.render("./admin/dashboard", {
             title: "Manage Products",
@@ -175,7 +176,16 @@ adminRouter.get("/admins", checkJwt, checkScopes(), async (req: Request, res: Re
 
 adminRouter.get("/users", checkJwt, checkScopes(), async (req: Request, res: Response, next: NextFunction) => {
     try {
-        res.render("./admin/dashboard", {title: "Manage Users", panelPath: "users"});
+        const startIndex = 0;
+        const initialMaxUserCount = 6//64;
+        const users = await Manager.getUsers();
+        res.render("./admin/dashboard", {
+            title: "Manage Users",
+            panelPath: "users",
+            users,
+            startIndex,
+            initialMaxUserCount
+        });
     } catch (err) {
         next(err);
     }

@@ -8,7 +8,7 @@ rootRouter.use(express.json());
 rootRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
     try {
         const startIndex = 0;
-        const initialMaxProductCount = 64
+        const initialMaxProductCount = 6//64;
         const glasses = await getProducts({}, false);
         res.render("./root/root", {title: "Home", glasses, startIndex, initialMaxProductCount});
     } catch (err) {
