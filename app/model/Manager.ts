@@ -14,6 +14,15 @@ const managementClient = new ManagementClient({
     }
 });
 
+export class InsufficientScopeError extends Error {
+    private scopes;
+
+    public constructor(scopes) {
+        super();
+        this.scopes = scopes;
+    }
+}
+
 export class Manager {
     private static managementClient: ManagementClient = managementClient;
 

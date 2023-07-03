@@ -3,8 +3,7 @@ import path from "path";
 import cloudinary from "cloudinary";
 import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
-import {Manager} from "../model/Manager";
-import {InsufficientScopeError} from "express-oauth2-jwt-bearer";
+import {InsufficientScopeError, Manager} from "../model/Manager";
 
 require("dotenv").config();
 
