@@ -901,6 +901,9 @@ select {
 .w-\[16cqw\] {
   width: 16cqw;
 }
+.w-\[20\%\] {
+  width: 20%;
+}
 .w-\[40cqw\] {
   width: 40cqw;
 }
@@ -13804,12 +13807,6 @@ select {
   .dark\:hover\:bg-zinc-800:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(39 39 42 / var(--tw-bg-opacity));
-  }
-}
-@media (min-width: 640px) {
-
-  .sm\:block {
-    display: block;
   }
 }
 @media (min-width: 768px) {

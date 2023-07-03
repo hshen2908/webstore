@@ -63,7 +63,7 @@ adminRouter.get("/products", checkScopes(true, "create:product"), async (req: Re
     }
 });
 
-adminRouter.post("/products", async (req: Request, res: Response, next: NextFunction) => {
+adminRouter.post("/products", checkScopes(true, "create:product"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const filter = req.body;
         const startIndex = filter.startIndex;
@@ -149,7 +149,21 @@ adminRouter.post("/api/upload-signature", checkScopes(false, "create:product"), 
 
 adminRouter.get("/admins", checkScopes(true), async (req: Request, res: Response, next: NextFunction) => {
     try {
-        res.render("./admin/dashboard", {title: "Manage Admins", panelPath: "admins"});
+        const startIndex = 0;
+        const initialMaxAdminCount = 6//64;
+        const admins = await Manager.getAdmins();
+        const adminsWithRoles = await Promise.all(admins.map(async (admin) => {
+            const adminScopes = await Manager.getUserScopes(admin);
+            const adminRoles = await Manager.getUserRoles(admin);
+            return {...admin, adminScopes, adminRoles};
+        }));
+        res.render("./admin/dashboard", {
+            title: "Manage Admins",
+            panelPath: "admins",
+            adminsWithRoles,
+            startIndex,
+            initialMaxAdminCount
+        });
     } catch (err) {
         next(err);
     }

@@ -1,0 +1,26 @@
+<% for(let adminsIndex = startIndex; adminsIndex < adminsWithRoles.length && adminsIndex < initialMaxAdminCount; adminsIndex++) { %>
+    <% let a = adminsWithRoles[adminsIndex]; %>
+    <tr class="min-w-full group ease-in duration-75 border-b dark:border-b-gray-300 border-b-gray-700 dark:hover:bg-zinc-800 hover:bg-zinc-200">
+        <td id="[<%- adminsIndex %>]productNameInfo" class="pr-2 py-2 font-medium">
+            <img src="<%- a.picture %>" class="rounded-lg min-w-full shadow-sm aspect-square object-cover snap-center"></img>
+        </td>
+        <td id="[<%- adminsIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis font-medium break-words"><%- a.name %></td>
+        <td id="[<%- adminsIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis font-medium break-words"><%- a.email %></td>
+        <td id="[<%- adminsIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis font-medium">
+            <% a.adminRoles.forEach(role => { %>
+                <span class="block w-full"><%- role.name %></span>
+            <% }) %>
+        </td>
+        <td id="[<%- adminsIndex %>]productNameInfo" class="pr-2 py-2 overflow-ellipsis font-medium">
+            <% a.adminScopes.forEach(scope => { %>
+                <span class="block"><%- scope.permission_name %></span>
+            <% }) %>
+        </td>
+
+        <td class="pr-1 py-2">
+            <div class="">
+                <button type="submit" id="<%- a.user_id %>" class="deleteProductButton text-sm text-medium font-medium p-2 rounded-md bg-rose-600" data-product-id="<%- a.user_id %>">Remove</button>
+            </div>  
+        </td>
+    </tr>
+<% } %>
