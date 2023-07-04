@@ -1,12 +1,17 @@
 import {ErrorRequestHandler, Express, NextFunction, Request, RequestHandler, Response, Router} from "express";
 import * as http from "http";
 import {ServerLogger} from "../logging/ServerLogger";
+import {Manager} from "./Manager";
 
 const HttpTerminator = require("lil-http-terminator");
 const express = require("express");
 const path = require("path");
-const defaultErrorHandler: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
-    res.status(404).render("./root/pageNotFound", {title: "404 Not Found"});
+const defaultErrorHandler: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+    res.status(404).render("./root/pageNotFound", {
+        title: "404 Not Found",
+        includeAdminDashboardLink: res.locals.user ? await Manager.checkUserScopes(res.locals.user, ["view:admin-dashboard"]) : false,
+
+    });
 }
 
 export abstract class Server {

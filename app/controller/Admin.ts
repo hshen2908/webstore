@@ -3,7 +3,8 @@ import path from "path";
 import cloudinary from "cloudinary";
 import {getProducts, GlassesModel} from "../model/Glasses";
 import {requiresAuth} from "express-openid-connect";
-import {InsufficientScopeError, Manager} from "../model/Manager";
+import {AppMetadata, User, UserMetadata} from "auth0";
+import {InsufficientScopeError, Manager} from "./Manager";
 
 require("dotenv").config();
 
@@ -150,12 +151,9 @@ adminRouter.get("/admins", checkScopes(true), async (req: Request, res: Response
     try {
         const startIndex = 0;
         const initialMaxAdminCount = 6//64;
-        const admins = await Manager.getAdmins();
-        const adminsWithRoles = await Promise.all(admins.map(async (admin) => {
-            const adminScopes = await Manager.getUserScopes(admin);
-            const adminRoles = await Manager.getUserRoles(admin);
-            return {...admin, adminScopes, adminRoles};
-        }));
+        const adminsWithRoles: User<AppMetadata, UserMetadata>[] = await Manager.getAdmins();
+
+        console.log(adminsWithRoles)
         res.render("./admin/dashboard", {
             title: "Manage Admins",
             panelPath: "admins",

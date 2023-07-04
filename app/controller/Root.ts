@@ -1,6 +1,6 @@
 import express, {NextFunction, Request, Response, Router} from "express";
 import {getProducts} from "../model/Glasses";
-import {Manager} from "../model/Manager";
+import {Manager} from "./Manager";
 
 const rootRouter: Router = Router();
 
