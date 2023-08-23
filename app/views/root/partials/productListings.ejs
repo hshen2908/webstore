@@ -38,7 +38,7 @@
                         <% g.variants.forEach((variant, index) => { %>
                             <div class="flex" id="[<%- glassesIndex %>]productVariantInfo[<%- index %>]">
                                 <input class="peer form-radio rounded-md absolute hidden" type="radio" name="[<%- glassesIndex %>]productVariantInfo"  id="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" value="<%- index %>" data-images='<%- JSON.stringify(variant.images) %>' <%- index === 0 ? "checked" : "" %>>
-                                <label style="background-color: <%- variant.color; %>"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600"></label>
+                                <label style="background-color: <%- variant.color; %>"  id="[<%- glassesIndex %>]productVariantInfo[color][<%- index %>]" for="[<%- glassesIndex %>]productVariantInfoInput[color][<%- index %>]" class="w-[16cqw] h-[16cqw] rounded-full bg-[black] p-2 border-2 border-solid border-gray-400 peer-checked:border-rose-600 peer-checked:outline peer-checked:outline-4 peer-checked:outline-rose-200 dark:peer-checked:border-white dark:peer-checked:outline-none"></label>
                             </div>
                         <% }) %>
                     </div>
@@ -47,20 +47,20 @@
                 <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">CATEGORIES</h2>
                     <div class="flex flex-wrap gap-1">
-                        <span id="[<%- glassesIndex %>]productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-teal-400 text-teal-400 <%- g.categories.includes("unissex") ? "" : "hidden" %>">UNISSEX</span>
-                        <span id="[<%- glassesIndex %>]productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-cyan-400 text-cyan-400 <%- g.categories.includes("men") ? "" : "hidden" %>">MEN</span>
-                        <span id="[<%- glassesIndex %>]productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-purple-400 text-purple-400 <%- g.categories.includes("women") ? "" : "hidden" %>">WOMEN</span>
-                        <span id="[<%- glassesIndex %>]productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-orange-400 text-orange-400 <%- g.categories.includes("kids") ? "" : "hidden" %>">KIDS</span>
+                        <span id="[<%- glassesIndex %>]productUnissexInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-teal-400 text-teal-400 <%- g.categories.includes("unissex") ? "" : "hidden" %>">UNISSEX</span>
+                        <span id="[<%- glassesIndex %>]productMenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-cyan-400 text-cyan-400 <%- g.categories.includes("men") ? "" : "hidden" %>">MEN</span>
+                        <span id="[<%- glassesIndex %>]productWomenInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-purple-400 text-purple-400 <%- g.categories.includes("women") ? "" : "hidden" %>">WOMEN</span>
+                        <span id="[<%- glassesIndex %>]productKidsInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-orange-400 text-orange-400 <%- g.categories.includes("kids") ? "" : "hidden" %>">KIDS</span>
                     </div>
                 </div>
 
-                <div class="border-t-2 dark:border-gray-600 border-gray-400" style="container-type: inline-size">
+                <div class= dark:border-gray-600 border-gray-400" style="container-type: inline-size">
                     <h2 class="text-[8cqw] font-medium py-1">MATERIALS</h2>
                     <div class="flex flex-wrap gap-1">
-                        <span id="[<%- glassesIndex %>]productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-red-400 text-red-400 <%- g.materials.includes("acetate") ? "" : "hidden" %>">Acetate</span>
-                        <span id="[<%- glassesIndex %>]productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-green-400 text-green-400 <%- g.materials.includes("stainless steel") ? "" : "hidden" %>">Stainless Steel</span>
-                        <span id="[<%- glassesIndex %>]productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-blue-400 text-blue-400 <%- g.materials.includes("titanium") ? "" : "hidden" %>">Titanium</span>
-                        <span id="[<%- glassesIndex %>]productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium rounded-full border-2 border-pink-400 text-pink-400 <%- g.materials.includes("tr90") ? "" : "hidden" %>">Tr90</span>
+                        <span id="[<%- glassesIndex %>]productAcetateInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-red-400 text-red-400 <%- g.materials.includes("acetate") ? "" : "hidden" %>">Acetate</span>
+                        <span id="[<%- glassesIndex %>]productStainlessSteelInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-green-400 text-green-400 <%- g.materials.includes("stainless steel") ? "" : "hidden" %>">Stainless Steel</span>
+                        <span id="[<%- glassesIndex %>]productTitaniumInfo" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-blue-400 text-blue-400 <%- g.materials.includes("titanium") ? "" : "hidden" %>">Titanium</span>
+                        <span id="[<%- glassesIndex %>]productTr90Info" class="text-[5cqw] py-[2cqw] px-[5cqw] font-medium border-b-2 border-pink-400 text-pink-400 <%- g.materials.includes("tr90") ? "" : "hidden" %>">Tr90</span>
                     </div>
                 </div>
 
