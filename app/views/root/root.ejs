@@ -1,35 +1,32 @@
 <%- include("./partials/htmlStart") %>
 <!-- bg-gradient-to-bl dark:from-rose-600 from-white to-rose-300 dark:to-zinc-900 bg-[linear-gradient(to_left_bottom,rgba(223,70,97,0.5),rgba(24,24,27,0.5)),url('/images/bg_light.jpg')] -->
-<div class="flex flex-col justify-center">
+<div class="h-screen flex flex-col justify-center dark:bg-gradient-to-r dark:from-[#000000] dark:to-gray-800">
     <%- include("./partials/header") %>
-    <div class="min-w-full min-h-screen flex items-center relative">
+    <div class="min-w-full flex-grow flex items-center relative">
         <div class="min-w-full text-white flex flex-wrap p-8 flex-col justify-between items-center">
-            <!-- <h2 class="text-8xl font-bold py-8">
-                Lorem Ipsum
-            </h2> -->
-            
-            <!-- <img class="w-96 lg:w-5/12 dark:hidden" src="/images/logo_hreyewear_light.gif" alt="" srcset=""> -->
-            <img class="w-96 lg:w-5/12 dark:hidden p-8" src="/images/logo_hreyewear_dark.png" alt="" srcset="">
+            <img class="w-96 lg:w-5/12 dark:hidden p-8" src="/images/logo_hreyewear_light.png" alt="" srcset="">
             <img class="w-96 lg:w-5/12 hidden dark:block p-8" src="/images/logo_hreyewear_dark.png" alt="" srcset="">
-            <p class="text-center max-w-4xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium esse officia aperiam illo in obcaecati qui architecto exercitationem. Mollitia, porro! Odio omnis sequi exercitationem.
+            <p class="text-center max-w-4xl dark:text-[#eacda3] text-[#ed4264]">
+                Bem vindo à HR Eyewear. Sua fonte exclusiva de armações em grande estilo! Descubra uma variedade de óculos de alta qualidade, desde clássicos atemporais até as últimas tendências da moda. Explore sua visão conosco.
             </p>
         </div>
-        <a href="#content" class="text-black bg-white p-2 rounded-full flex justify-center items-center absolute right-4 bottom-24">
+        <a href="#content" class="dark:text-[#eacda3] text-[#ed4264] border-2 border-[#ed4264] dark:border-[#eacda3] p-2 rounded-full flex justify-center items-center absolute right-16 bottom-16">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.70711 4.29289C5.31658 3.90237 4.68342 3.90237 4.29289 4.29289C3.90237 4.68342 3.90237 5.31658 4.29289 5.70711L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071L19.7071 5.70711C20.0976 5.31658 20.0976 4.68342 19.7071 4.29289C19.3166 3.90237 18.6834 3.90237 18.2929 4.29289L12 10.5858L5.70711 4.29289ZM5.70711 11.2929C5.31658 10.9024 4.68342 10.9024 4.29289 11.2929C3.90237 11.6834 3.90237 12.3166 4.29289 12.7071L11.2929 19.7071C11.6834 20.0976 12.3166 20.0976 12.7071 19.7071L19.7071 12.7071C20.0976 12.3166 20.0976 11.6834 19.7071 11.2929C19.3166 10.9024 18.6834 10.9024 18.2929 11.2929L12 17.5858L5.70711 11.2929Z" fill="currentColor"></path> </g></svg>
         </a>
     </div>
 </div>
-<div class="absolute top-[100vh] z-10  bg-gradient-to-t" id="content">
-    <main class="flex-grow rounded-3xl dark:bg-zinc-900 bg-white border-y-[1px] dark:border-gray-600 border-gray-400">
+
+<main id="content" class="md:p-12 p-4 flex-grow dark:border-gray-600 border-gray-400">
+    <div class="bg-[#ffffff] dark:bg-[#17181e] m-6 rounded-lg">
         <%- include("./partials/filterForm") %>
-        <section id="productsContainer" class="max-w-none mx-auto p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-between gap-4" data-product-count="<%- (glasses.length < initialMaxProductCount ? glasses.length : initialMaxProductCount) %>" data-total-product-count="<%- glasses.length %>">
-            <%- include("./partials/productListings") %>
-        </section>
-        <%- include("./partials/loadMoreButton") %>
-    </main>
-    <%- include("./partials/footer") %>
-</div>
+    </div>
+    <section id="productsContainer" class="max-w-none mx-auto p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-between gap-4" data-product-count="<%- (glasses.length < initialMaxProductCount ? glasses.length : initialMaxProductCount) %>" data-total-product-count="<%- glasses.length %>">
+        <%- include("./partials/productListings") %>
+    </section>
+    <%- include("./partials/loadMoreButton") %>
+</main>
+
+<%- include("./partials/footer") %>
 
 <script src="/scripts/chooseVariant.js" defer></script>
 <script src="/scripts/getProducts.js"></script>
