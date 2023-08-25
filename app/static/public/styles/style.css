@@ -1125,10 +1125,6 @@ select {
 .border-none {
   border-style: none;
 }
-.border-\[\#eacda3\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(234 205 163 / var(--tw-border-opacity));
-}
 .border-\[\#ed4264\] {
   --tw-border-opacity: 1;
   border-color: rgb(237 66 100 / var(--tw-border-opacity));
@@ -13721,6 +13717,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(228 228 231 / var(--tw-bg-opacity));
 }
+.hover\:text-\[\#ed4264\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(237 66 100 / var(--tw-text-opacity));
+}
 .hover\:text-rose-600:hover {
   --tw-text-opacity: 1;
   color: rgb(225 29 72 / var(--tw-text-opacity));
@@ -13728,6 +13728,10 @@ select {
 .hover\:saturate-150:hover {
   --tw-saturate: saturate(1.5);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.focus\:border-\[\#eacda3\]:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(234 205 163 / var(--tw-border-opacity));
 }
 .focus\:border-rose-600:focus {
   --tw-border-opacity: 1;
@@ -13739,6 +13743,10 @@ select {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+.focus\:ring-\[\#eacda3\]:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(234 205 163 / var(--tw-ring-opacity));
 }
 .focus\:ring-rose-600:focus {
   --tw-ring-opacity: 1;
@@ -13752,9 +13760,13 @@ select {
 .active\:opacity-100:active {
   opacity: 1;
 }
-.group:hover .group-hover\:text-rose-600 {
+.group:hover .group-hover\:text-\[\#ed4264\] {
   --tw-text-opacity: 1;
-  color: rgb(225 29 72 / var(--tw-text-opacity));
+  color: rgb(237 66 100 / var(--tw-text-opacity));
+}
+.peer:checked ~ .peer-checked\:border-\[\#ed4264\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(237 66 100 / var(--tw-border-opacity));
 }
 .peer:checked ~ .peer-checked\:border-rose-600 {
   --tw-border-opacity: 1;
@@ -13859,6 +13871,21 @@ select {
   .dark\:hover\:bg-zinc-800:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:text-\[\#eacda3\]:hover {
+    --tw-text-opacity: 1;
+    color: rgb(234 205 163 / var(--tw-text-opacity));
+  }
+
+  .group:hover .dark\:group-hover\:text-\[\#eacda3\] {
+    --tw-text-opacity: 1;
+    color: rgb(234 205 163 / var(--tw-text-opacity));
+  }
+
+  .peer:checked ~ .dark\:peer-checked\:border-\[\#eacda3\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(234 205 163 / var(--tw-border-opacity));
   }
 
   .peer:checked ~ .dark\:peer-checked\:border-white {
